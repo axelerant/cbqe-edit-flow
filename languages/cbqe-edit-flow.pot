@@ -1,0 +1,161 @@
+# Copyright (C) 2013 Custom Bulk/Quick Edit Premium - WordPress SEO by Yoast
+# This file is distributed under the same license as the Custom Bulk/Quick Edit Premium - WordPress SEO by Yoast package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Bulk/Quick Edit Premium - WordPress SEO by Yoast "
+"1.0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/cbqep-wordpress-seo\n"
+"POT-Creation-Date: 2013-11-28 00:57:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: cbqep-wordpress-seo.php:154
+msgid ""
+"If your WordPress SEO by Yoast for Custom Bulk/Quick Edit Premium display "
+"has gone to funky town, please <a href=\"%s\">read the FAQ</a> about "
+"possible CSS fixes."
+msgstr ""
+
+#: cbqep-wordpress-seo.php:230
+msgid "Meta Robots Index"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:232
+msgid "Default for post type"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:250
+msgid "Meta Robots Advanced"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:253
+msgid "NO ODP"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:254
+msgid "NO YDIR"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:255
+msgid "No Archive"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:256
+msgid "No Snippet"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:264
+msgid "Breadcrumbs title"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:271
+msgid "Include in Sitemap"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:273 cbqep-wordpress-seo.php:302
+msgid "Auto detect"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:274 cbqep-wordpress-seo.php:303
+msgid "Always include"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:275 cbqep-wordpress-seo.php:304
+msgid "Never include"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:281
+msgid "Sitemap Priority"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:283
+msgid "Automatic prioritization"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:284
+msgid "1 - Highest priority"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:286
+msgid "Default for first tier pages"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:288
+msgid "Default for second tier pages and posts"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:289
+msgid "Medium priority"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:293
+msgid "Lowest priority"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:300
+msgid "Include in HTML Sitemap"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:310
+msgid "Canonical URL"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:315
+msgid "301 Redirect"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:321
+msgid "Configuration values for %s. In general, do NOT edit these."
+msgstr ""
+
+#: cbqep-wordpress-seo.php:322
+msgid "WordPress SEO by Yoast Attributes for %s"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:323
+msgid "%s Configuration"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:352
+msgid "Hide"
+msgstr ""
+
+#: cbqep-wordpress-seo.php:353
+msgid "Show"
+msgstr ""
+
+#: lib/class-cbqep-wordpress-seo-licensing.php:31
+msgid "License Key for %1$s"
+msgstr ""
+
+#: lib/class-cbqep-wordpress-seo-licensing.php:36
+msgid ""
+"Required to enable premium plugin updating. Activation is automatic. Use `0` "
+"to deactivate."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Custom Bulk/Quick Edit Premium - WordPress SEO by Yoast"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://aihr.us/products/wordpress-seo-custom-bulkquick-edit-premium/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Modify WordPress SEO by Yoast options via bulk and quick edit panels in "
+"conjunction with Custom Bulk/Quick Edit Premium."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Michael Cannon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://aihr.us/resume/"
+msgstr ""
