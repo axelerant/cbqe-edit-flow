@@ -2,7 +2,7 @@
 
 Contributors: comprock
 Donate link: http://aihr.us/about-aihrus/donate/
-Tags: custom, bulk edit, quick edit, custom post types, edit flow, seo
+Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.5
 Tested up to: 3.8.0
 Stable tag: 1.0.2
