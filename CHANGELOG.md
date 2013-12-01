@@ -1,6 +1,7 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## master
+* Move screenshots to SVN assets
 
 ## 1.0.1
 * URL updates
