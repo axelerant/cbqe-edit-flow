@@ -36,7 +36,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 = API =
 
-* Read the [Edit Flow for Custom Bulk/Quick Edit API](http://aihr.us/edit-flow-custom-bulkquick-edit/api/).
+* Read the [Edit Flow for Custom Bulk/Quick Edit API](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/API.md).
 
 = Languages =
 
@@ -74,7 +74,7 @@ Please visit the [Edit Flow for Custom Bulk/Quick Edit Knowledge Base](https://a
 
 == Changelog ==
 
-See [CHANGELOG](http://aihr.us/edit-flow-custom-bulkquick-edit/changelog/)
+See [CHANGELOG](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CHANGELOG.md)
 
 
 == Upgrade Notice ==
@@ -86,4 +86,4 @@ See [CHANGELOG](http://aihr.us/edit-flow-custom-bulkquick-edit/changelog/)
 
 == TODO ==
 
-See [TODO](http://aihr.us/edit-flow-custom-bulkquick-edit/todo/)
+See [TODO](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/TODO.md)

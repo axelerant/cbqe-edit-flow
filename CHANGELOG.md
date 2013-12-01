@@ -1,6 +1,7 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## master
+* URL updates
 
 ## 1.0.0
 * Add screenshot 1. Edit Flow field settings

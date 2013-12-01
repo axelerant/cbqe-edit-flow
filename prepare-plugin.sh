@@ -9,6 +9,7 @@ NEW_EXTENDS_URL="http://wordpress.org/plugins/custom-bulkquick-edit/"
 NEW_EXT_API="https://github.com/michael-cannon/${NEW_BASE}/blob/master/API.md"
 NEW_EXT_BASE="edit-flow"
 NEW_EXT_CHANGELOG="https://github.com/michael-cannon/${NEW_BASE}/blob/master/CHANGELOG.md"
+NEW_EXT_TODO="https://github.com/michael-cannon/${NEW_BASE}/blob/master/TODO.md"
 NEW_EXT_URL="http://wordpress.org/plugins/${NEW_EXT_BASE}/"
 NEW_KB_PATH=""
 NEW_NOTICE="_ef"
@@ -33,6 +34,7 @@ OLD_EXT_API="http://aihr.us/edit-flow-custom-bulkquick-edit-premium/api/"
 OLD_EXT_BASE="wordpress-seo"
 OLD_EXT_CHANGELOG="http://aihr.us/edit-flow-custom-bulkquick-edit-premium/changelog/"
 OLD_EXT_SHORT="WordPress SEO"
+OLD_EXT_TODO="http://aihr.us/edit-flow-custom-bulkquick-edit-premium/todo/"
 OLD_EXT_URL="http://wordpress.org/plugins/wordpress-seo/"
 OLD_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
 OLD_NOTICE="_ef"
@@ -111,6 +113,11 @@ do
 	if [[ '' != ${NEW_EXT_CHANGELOG} ]]
 	then
 		perl -pi -e "s#${OLD_EXT_CHANGELOG}#${NEW_EXT_CHANGELOG}#g" ${FILE}
+	fi
+
+	if [[ '' != ${NEW_EXT_TODO} ]]
+	then
+		perl -pi -e "s#${OLD_EXT_TODO}#${NEW_EXT_TODO}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_EXT_URL} ]]
