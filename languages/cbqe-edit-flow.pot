@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Bulk/Quick Edit - Edit Flow package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Bulk/Quick Edit - Edit Flow 0.0.1\n"
+"Project-Id-Version: Custom Bulk/Quick Edit - Edit Flow 1.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cbqe-edit-flow\n"
-"POT-Creation-Date: 2013-12-01 03:46:34+00:00\n"
+"POT-Creation-Date: 2013-12-01 23:20:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,120 +15,12 @@ msgstr ""
 #: cbqe-edit-flow.php:139
 msgid "If your Edit Flow for Custom Bulk/Quick Edit display has gone to funky town, please <a href=\"%s\">read the FAQ</a> about possible CSS fixes."
 msgstr ""
-
-#: cbqe-edit-flow.php:204
-msgid "Meta Robots Index"
-msgstr ""
-
-#: cbqe-edit-flow.php:206
-msgid "Default for post type"
-msgstr ""
-
-#: cbqe-edit-flow.php:224
-msgid "Meta Robots Advanced"
-msgstr ""
-
-#: cbqe-edit-flow.php:227
-msgid "NO ODP"
-msgstr ""
-
-#: cbqe-edit-flow.php:228
-msgid "NO YDIR"
-msgstr ""
-
-#: cbqe-edit-flow.php:229
-msgid "No Archive"
-msgstr ""
-
-#: cbqe-edit-flow.php:230
-msgid "No Snippet"
-msgstr ""
-
-#: cbqe-edit-flow.php:238
-msgid "Breadcrumbs title"
-msgstr ""
-
-#: cbqe-edit-flow.php:245
-msgid "Include in Sitemap"
-msgstr ""
-
-#: cbqe-edit-flow.php:247 cbqe-edit-flow.php:276
-msgid "Auto detect"
-msgstr ""
-
-#: cbqe-edit-flow.php:248 cbqe-edit-flow.php:277
-msgid "Always include"
-msgstr ""
-
-#: cbqe-edit-flow.php:249 cbqe-edit-flow.php:278
-msgid "Never include"
-msgstr ""
-
-#: cbqe-edit-flow.php:255
-msgid "Sitemap Priority"
-msgstr ""
-
-#: cbqe-edit-flow.php:257
-msgid "Automatic prioritization"
-msgstr ""
-
-#: cbqe-edit-flow.php:258
-msgid "1 - Highest priority"
-msgstr ""
-
-#: cbqe-edit-flow.php:260
-msgid "Default for first tier pages"
-msgstr ""
-
-#: cbqe-edit-flow.php:262
-msgid "Default for second tier pages and posts"
-msgstr ""
-
-#: cbqe-edit-flow.php:263
-msgid "Medium priority"
-msgstr ""
-
-#: cbqe-edit-flow.php:267
-msgid "Lowest priority"
-msgstr ""
-
-#: cbqe-edit-flow.php:274
-msgid "Include in HTML Sitemap"
-msgstr ""
-
-#: cbqe-edit-flow.php:284
-msgid "Canonical URL"
-msgstr ""
-
-#: cbqe-edit-flow.php:289
-msgid "301 Redirect"
-msgstr ""
-
-#: cbqe-edit-flow.php:295
-msgid "Configuration values for %s. In general, do NOT edit these."
-msgstr ""
-
-#: cbqe-edit-flow.php:296
-msgid "Edit Flow Attributes for %s"
-msgstr ""
-
-#: cbqe-edit-flow.php:297
-msgid "%s Configuration"
-msgstr ""
-
-#: cbqe-edit-flow.php:326
-msgid "Hide"
-msgstr ""
-
-#: cbqe-edit-flow.php:327
-msgid "Show"
-msgstr ""
 #. Plugin Name of the plugin/theme
 msgid "Custom Bulk/Quick Edit - Edit Flow"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/plugins/edit-flow/"
+msgid "http://wordpress.org/plugins/cbqe-edit-flow/"
 msgstr ""
 
 #. Description of the plugin/theme
