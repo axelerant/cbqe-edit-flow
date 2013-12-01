@@ -11,6 +11,7 @@ NEW_EXT_BASE="edit-flow"
 NEW_EXT_CHANGELOG="https://github.com/michael-cannon/${NEW_BASE}/blob/master/CHANGELOG.md"
 NEW_EXT_URL="http://wordpress.org/plugins/${NEW_EXT_BASE}/"
 NEW_KB_PATH=""
+NEW_NOTICE="_ef"
 NEW_SITE="http://aihr.us/edit-flow-custom-bulkquick-edit/"
 NEW_SLUG="cbqe_ef_"
 
@@ -34,6 +35,7 @@ OLD_EXT_CHANGELOG="http://aihr.us/edit-flow-custom-bulkquick-edit-premium/change
 OLD_EXT_SHORT="WordPress SEO"
 OLD_EXT_URL="http://wordpress.org/plugins/wordpress-seo/"
 OLD_KB_PATH="20112546-Custom-Bulk-Quick-Edit"
+OLD_NOTICE="_ef"
 OLD_SITE="http://aihr.us/wordpress-seo-custom-bulkquick-edit-premium/"
 OLD_SLUG="cbqep_wpseo_"
 OLD_STORE_URL="http://aihr.us/products/wordpress-seo-custom-bulkquick-edit-premium/"
@@ -135,6 +137,11 @@ do
 	if [[ '' != ${NEW_SLUG_LONG} ]]
 	then
 		perl -pi -e "s#${OLD_SLUG_LONG}#${NEW_SLUG_LONG}#g" ${FILE}
+	fi
+
+	if [[ '' != ${NEW_NOTICE} ]]
+	then
+		perl -pi -e "s#${OLD_NOTICE}#${NEW_NOTICE}#g" ${FILE}
 	fi
 
 	if [[ '' != ${NEW_TAG} ]]

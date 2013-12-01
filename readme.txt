@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow, seo
 Requires at least: 3.5
 Tested up to: 3.8.0
-Stable tag: 1.0.2
+Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,7 +80,7 @@ See [CHANGELOG](http://aihr.us/edit-flow-custom-bulkquick-edit/changelog/)
 
 == Upgrade Notice ==
 
-= 1.0.0 =
+= 0.0.1 =
 
 * Initial release
 

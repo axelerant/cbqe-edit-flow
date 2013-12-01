@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit.
- * Version: 1.0.2
+ * Version: 0.0.1
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -29,12 +29,6 @@ if ( ! defined( 'CBQE_PLUGIN_DIR' ) )
 if ( ! defined( 'CBQE_PLUGIN_DIR_LIB' ) )
 	define( 'CBQE_PLUGIN_DIR_LIB', CBQE_PLUGIN_DIR . '/lib' );
 
-if ( ! defined( 'CBQEP_PLUGIN_DIR' ) )
-	define( 'CBQEP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) . '/../custom-bulkquick-edit-premium' );
-
-if ( ! defined( 'CBQEP_PLUGIN_DIR_LIB' ) )
-	define( 'CBQEP_PLUGIN_DIR_LIB', CBQEP_PLUGIN_DIR . '/lib' );
-
 if ( ! defined( 'CBQE_EF_PLUGIN_DIR' ) )
 	define( 'CBQE_EF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -45,16 +39,16 @@ require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
 
 class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
+	const BASE_PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
+	const BASE_VERSION     = '1.3.1';
+	const EXT_BASE         = 'edit-flow/wp-seo.php';
+	const EXT_VERSION      = '1.4.19';
 	const ID               = 'cbqe-edit-flow';
 	const ITEM_NAME        = 'Edit Flow for Custom Bulk/Quick Edit';
 	const KEY              = '_yoast_wpseo_';
 	const PLUGIN_BASE      = 'cbqe-edit-flow/cbqe-edit-flow.php';
-	const PREM_PLUGIN_BASE = 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php';
-	const PREM_VERSION     = '1.3.0';
 	const SLUG             = 'cbqe_ef_';
-	const VERSION          = '1.0.2';
-	const EXT_BASE         = 'edit-flow/wp-seo.php';
-	const EXT_VERSION      = '1.4.19';
+	const VERSION          = '0.0.1';
 
 	public static $class = __CLASS__;
 	public static $notice_key;
@@ -75,12 +69,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function admin_init() {
 		if ( ! self::version_check() )
 			return;
-
-		global $CBQE_EF_Licensing;
-		if ( ! $CBQE_EF_Licensing->valid_license() ) {
-			self::set_notice( 'notice_license', DAY_IN_SECONDS );
-			self::check_notices();
-		}
 
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
 
@@ -114,7 +102,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
 
-		if ( ! is_plugin_active( Custom_Bulkquick_Edit_Edit_Flow::PREM_PLUGIN_BASE ) ) {
+		if ( ! is_plugin_active( Custom_Bulkquick_Edit_Edit_Flow::BASE_PLUGIN_BASE ) ) {
 			deactivate_plugins( Custom_Bulkquick_Edit_Edit_Flow::PLUGIN_BASE );
 			add_action( 'admin_notices', array( 'Custom_Bulkquick_Edit_Edit_Flow', 'notice_version' ) );
 			return;
@@ -122,7 +110,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		if ( ! is_plugin_active( Custom_Bulkquick_Edit_Edit_Flow::EXT_BASE ) ) {
 			deactivate_plugins( Custom_Bulkquick_Edit_Edit_Flow::PLUGIN_BASE );
-			add_action( 'admin_notices', array( 'Custom_Bulkquick_Edit_Edit_Flow', 'notice_version_wpseo' ) );
+			add_action( 'admin_notices', array( 'Custom_Bulkquick_Edit_Edit_Flow', 'notice_version_ef' ) );
 			return;
 		}
 	}
@@ -144,9 +132,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		$CBQE_EF_Licensing = new Custom_Bulkquick_Edit_Edit_Flow_Licensing();
-		$CBQE_EF_Licensing->deactivate_license();
 	}
 
 
@@ -166,7 +151,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		if ( ! is_plugin_active( $base ) )
 			$good_version = false;
 
-		if ( is_plugin_inactive( self::PREM_PLUGIN_BASE ) || Custom_Bulkquick_Edit::VERSION < self::PREM_VERSION )
+		if ( is_plugin_inactive( self::BASE_PLUGIN_BASE ) || Custom_Bulkquick_Edit::VERSION < self::BASE_VERSION )
 			$good_version = false;
 
 		if ( ! $good_version && is_plugin_active( $base ) ) {
@@ -174,9 +159,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			self::set_notice( 'notice_version' );
 		}
 
-		if ( is_plugin_inactive( self::EXT_BASE ) || WPSEO_VERSION < self::EXT_VERSION && is_plugin_active( $base ) ) {
+		if ( is_plugin_inactive( self::EXT_BASE ) || EDIT_FLOW_VERSION < self::EXT_VERSION && is_plugin_active( $base ) ) {
 			deactivate_plugins( $base );
-			self::set_notice( 'notice_version_wpseo' );
+			self::set_notice( 'notice_version_ef' );
 
 			$good_version = false;
 		}
@@ -189,29 +174,18 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 
-	public static function notice_license( $post_type = null, $settings_id = null, $free_name = null, $purchase_url = null, $item_name = null ) {
-		$post_type    = null;
-		$settings_id  = Custom_Bulkquick_Edit_Settings::ID;
-		$free_name    = 'Custom Bulk/Quick Edit';
-		$purchase_url = 'http://wordpress.org/plugins/edit-flow/';
-		$item_name    = self::ITEM_NAME;
-
-		parent::notice_license( $post_type, $settings_id, $free_name, $purchase_url, $item_name );
-	}
-
-
 	public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
-		$free_base    = self::PREM_PLUGIN_BASE;
+		$free_base    = self::BASE_PLUGIN_BASE;
 		$free_name    = 'Custom Bulk/Quick Edit';
-		$free_slug    = 'custom-bulkquick-edit-premium';
-		$free_version = self::PREM_VERSION;
+		$free_slug    = 'custom-bulkquick-edit';
+		$free_version = self::BASE_VERSION;
 		$item_name    = self::ITEM_NAME;
 
 		parent::notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name );
 	}
 
 
-	public static function notice_version_wpseo( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
+	public static function notice_version_ef( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
 		$free_base    = self::EXT_BASE;
 		$free_name    = 'Edit Flow';
 		$free_slug    = 'edit-flow';
@@ -507,25 +481,6 @@ function cbqe_ef_init() {
 		return;
 
 	require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
-	require_once CBQE_EF_PLUGIN_DIR_LIB . '/class-cbqe-edit-flow-licensing.php';
-
-	global $CBQE_EF_Licensing;
-	if ( is_null( $CBQE_EF_Licensing ) )
-		$CBQE_EF_Licensing = new Custom_Bulkquick_Edit_Edit_Flow_Licensing();
-
-	if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) )
-		require_once CBQEP_PLUGIN_DIR_LIB . '/EDD_SL_Plugin_Updater.php';
-
-	$CBQE_EF_Updater = new EDD_SL_Plugin_Updater(
-		$CBQE_EF_Licensing->store_url,
-		__FILE__,
-		array(
-			'version' => Custom_Bulkquick_Edit_Edit_Flow::VERSION,
-			'license' => $CBQE_EF_Licensing->get_license(),
-			'item_name' => Custom_Bulkquick_Edit_Edit_Flow::ITEM_NAME,
-			'author' => $CBQE_EF_Licensing->author,
-		)
-	);
 
 	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
 		global $Custom_Bulkquick_Edit_Edit_Flow;
