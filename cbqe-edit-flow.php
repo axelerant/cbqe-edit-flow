@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit.
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -40,19 +40,22 @@ require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
 class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	const BASE_PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
-	const BASE_VERSION     = '1.3.1';
-	const EXT_BASE         = 'edit-flow/wp-seo.php';
-	const EXT_VERSION      = '1.4.19';
+	const BASE_VERSION     = '1.3.2';
+	const EXT_BASE         = 'edit-flow/edit_flow.php';
+	const EXT_VERSION      = '0.7.6';
 	const ID               = 'cbqe-edit-flow';
 	const ITEM_NAME        = 'Edit Flow for Custom Bulk/Quick Edit';
-	const KEY              = '_yoast_wpseo_';
 	const PLUGIN_BASE      = 'cbqe-edit-flow/cbqe-edit-flow.php';
 	const SLUG             = 'cbqe_ef_';
-	const VERSION          = '0.0.1';
+	const VERSION          = '1.0.0';
+
+	public static $ef_date;
+	public static $ef_fields = array();
+	public static $ef_number;
+	public static $ef_taxonomy;
 
 	public static $class = __CLASS__;
 	public static $notice_key;
-	public static $parts;
 
 
 	public function __construct() {
@@ -75,13 +78,10 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		if ( ! Custom_Bulkquick_Edit::do_load() )
 			return;
 
-		self::load_parts();
-
-		add_filter( 'cbqe_configuration_default', array( __CLASS__, 'configuration_default' ), 10, 3 );
+		add_action( 'cbqe_save_post', array( __CLASS__, 'save_post' ) );
 		add_filter( 'cbqe_manage_posts_custom_column_field_type', array( __CLASS__, 'manage_posts_custom_column_field_type' ), 10, 4 );
-		add_filter( 'cbqe_quick_edit_custom_box_field', array( __CLASS__, 'quick_edit_custom_box_field' ), 10, 5 );
-		add_filter( 'cbqe_settings', array( __CLASS__, 'settings' ) );
-		add_filter( 'cbqe_settings_config_script', array( __CLASS__, 'config_script' ), 10, 7 );
+		add_filter( 'cbqe_settings_fields', array( __CLASS__, 'settings_fields' ), 10, 2 );
+		add_filter( 'cbqe_settings_taxonomies', array( __CLASS__, 'settings_taxonomies' ) );
 	}
 
 
@@ -196,249 +196,22 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
-	public static function load_parts() {
-		$wpseo_options = get_wpseo_options();
-
-		self::$parts = array(
-			'meta-robots-noindex' => array(
-				'title' => esc_html__( 'Meta Robots Index', 'cbqe-edit-flow' ),
-				'options' => array(
-					0 => esc_html__( 'Default for post type', 'cbqe-edit-flow' ),
-					2 => 'index',
-					1 => 'noindex',
-				),
-				'type' => 'select',
-			),
-
-			// fixme
-			// 'meta-robots-nofollow' => array(
-			// 'title' => __( 'Meta Robots Follow' ),
-			// 'type' => 'radio',
-			// 'options' => array(
-			// '0' => __( 'Follow' ),
-			// '1' => __( 'Nofollow' ),
-			// ),
-			// ),
-
-			'meta-robots-adv' => array(
-				'title' => __( 'Meta Robots Advanced', 'cbqe-edit-flow' ),
-				'type' => 'multiple',
-				'options' => array(
-					'noodp' => __( 'NO ODP', 'cbqe-edit-flow' ),
-					'noydir' => __( 'NO YDIR', 'cbqe-edit-flow' ),
-					'noarchive' => __( 'No Archive', 'cbqe-edit-flow' ),
-					'nosnippet' => __( 'No Snippet', 'cbqe-edit-flow' ),
-				),
-			),
-		);
-
-		if ( isset( $wpseo_options['breadcrumbs-enable'] ) && $wpseo_options['breadcrumbs-enable'] ) {
-			self::$parts['bctitle'] = array(
-				'type' => 'text',
-				'title' => __( 'Breadcrumbs title', 'cbqe-edit-flow' ),
-			);
-		}
-
-		if ( isset( $wpseo_options['enablexmlsitemap'] ) && $wpseo_options['enablexmlsitemap'] ) {
-			self::$parts['sitemap-include'] = array(
-				'type' => 'select',
-				'title' => __( 'Include in Sitemap', 'cbqe-edit-flow' ),
-				'options' => array(
-					'-' => __( 'Auto detect', 'cbqe-edit-flow' ),
-					'always' => __( 'Always include', 'cbqe-edit-flow' ),
-					'never' => __( 'Never include', 'cbqe-edit-flow' ),
-				),
-			);
-
-			self::$parts['sitemap-prio'] = array(
-				'type' => 'select',
-				'title' => __( 'Sitemap Priority', 'cbqe-edit-flow' ),
-				'options' => array(
-					'-' => __( 'Automatic prioritization', 'cbqe-edit-flow' ),
-					'1' => __( '1 - Highest priority', 'cbqe-edit-flow' ),
-					'0.9' => '0.9',
-					'0.8' => '0.8 - ' . __( 'Default for first tier pages', 'cbqe-edit-flow' ),
-					'0.7' => '0.7',
-					'0.6' => '0.6 - ' . __( 'Default for second tier pages and posts', 'cbqe-edit-flow' ),
-					'0.5' => '0.5 - ' . __( 'Medium priority', 'cbqe-edit-flow' ),
-					'0.4' => '0.4',
-					'0.3' => '0.3',
-					'0.2' => '0.2',
-					'0.1' => '0.1 - ' . __( 'Lowest priority', 'cbqe-edit-flow' ),
-				),
-			);
-		}
-
-		self::$parts['sitemap-html-include'] = array(
-			'type' => 'select',
-			'title' => __( 'Include in HTML Sitemap', 'cbqe-edit-flow' ),
-			'options' => array(
-				'-' => __( 'Auto detect', 'cbqe-edit-flow' ),
-				'always' => __( 'Always include', 'cbqe-edit-flow' ),
-				'never' => __( 'Never include', 'cbqe-edit-flow' ),
-			),
-		);
-
-		self::$parts['canonical'] = array(
-			'type' => 'text',
-			'title' => __( 'Canonical URL', 'cbqe-edit-flow' ),
-		);
-
-		self::$parts['redirect'] = array(
-			'type' => 'text',
-			'title' => __( '301 Redirect', 'cbqe-edit-flow' ),
-		);
-	}
-
-
-	public static function settings( $settings ) {
-		$desc_conf  = esc_html__( 'Configuration values for %s. In general, do NOT edit these.', 'cbqe-edit-flow' );
-		$heading    = esc_html__( 'Edit Flow Attributes for %s', 'cbqe-edit-flow' );
-		$title_conf = esc_html__( '%s Configuration', 'cbqe-edit-flow' );
-
-		$wpseo_options = get_wpseo_options();
-
-		$post_types = Custom_Bulkquick_Edit::get_post_types();
-		foreach ( $post_types as $post_type => $label ) {
-			$hide_seo_key = 'hideeditbox-' . $post_type;
-			if ( isset( $wpseo_options[ $hide_seo_key ] ) && Custom_Bulkquick_Edit_Settings::is_true( $wpseo_options[ $hide_seo_key ] ) )
-				continue;
-
-			$post_key = $post_type . Custom_Bulkquick_Edit_Settings::ENABLE . self::KEY;
-
-			$settings[ $post_key ] = array(
-				'section' => $post_type,
-				'desc' => sprintf( $heading, $label ),
-				'type' => 'heading',
-			);
-
-			foreach ( self::$parts as $field => $item ) {
-				$key   = $post_key . $field;
-				$title = $item['title'];
-				$type  = isset( $item['type'] ) ? $item['type'] : 'select';
-
-				$settings[ $key ] = array(
-					'section' => $post_type,
-					'title' => $title,
-					'label' => $title,
-					'type' => 'select',
-					'choices' => array(
-						'' => esc_html__( 'Hide', 'cbqe-edit-flow' ),
-						self::KEY . $type => esc_html__( 'Show', 'cbqe-edit-flow' ),
-					),
-				);
-
-				$settings[ $key . Custom_Bulkquick_Edit_Settings::CONFIG ] = array(
-					'section' => $post_type,
-					'title' => sprintf( $title_conf, $title ),
-					'desc' => sprintf( $desc_conf, $title ),
-					'type' => 'textarea',
-					'validate' => 'trim',
-				);
-			}
-		}
-
-		return $settings;
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 */
-	public static function configuration_default( $default, $id, $type ) {
-		if ( false === strstr( $type, self::KEY ) )
-			return $default;
-
-		$field   = self::get_field_name( $id );
-		$options = ! empty( self::$parts[ $field ]['options'] ) ? self::$parts[ $field ]['options'] : null;
-
-		if ( is_null( $options ) )
-			return $default;
-
-		if ( is_array( $options ) ) {
-			$parts = array();
-			foreach ( $options as $key => $value )
-				$parts[] = $key . '|' . $value;
-
-			$default = implode( "\n", $parts );
-		}
-
-		return $default;
-	}
-
-
-	public static function get_field_name( $id ) {
-		$field = preg_replace( '#^.*' . self::KEY . '#', '', $id );
-		$field = str_replace( Custom_Bulkquick_Edit_Settings::CONFIG, '', $field );
-
-		return $field;
-	}
-
-
-	/**
-	 *
-	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 */
-	public static function quick_edit_custom_box_field( $input, $field_type, $field_name, $options, $bulk_mode ) {
-		$column_name    = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field_name );
-		$field_name_var = str_replace( '-', '_', $field_name );
-
-		$result = $input;
-		switch ( $field_type ) {
-		case self::KEY . 'multiple':
-			$result = Custom_Bulkquick_Edit::custom_box_select_multiple( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
-			break;
-
-		case self::KEY . 'radio':
-			if ( ! $bulk_mode )
-				$result = Custom_Bulkquick_Edit::custom_box_radio( $column_name, $field_name, $field_name_var, $options );
-			else
-				$result = Custom_Bulkquick_Edit::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
-			break;
-
-		case self::KEY . 'select':
-			$result = Custom_Bulkquick_Edit::custom_box_select( $column_name, $field_name, $field_name_var, $options, $bulk_mode );
-			break;
-
-		case self::KEY . 'text':
-			$result = Custom_Bulkquick_Edit::custom_box_input( $column_name, $field_name, $field_name_var );
-			break;
-		}
-
-		return $result;
-	}
-
-
 	/**
 	 *
 	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function manage_posts_custom_column_field_type( $current, $field_type, $column, $post_id ) {
-		global $post;
-
-		$details = Custom_Bulkquick_Edit::get_field_config( $post->post_type, $column );
-		$options = explode( "\n", $details );
-
-		$type = str_replace( self::KEY, '', $field_type );
-
 		$result = $current;
 		switch ( $field_type ) {
-		case self::KEY . 'multiple':
-		case self::KEY . 'select':
-			$result = Custom_Bulkquick_Edit::column_select( $column, $current, $options, $type );
-			break;
-			break;
-
-		case self::KEY . 'radio':
-			$result = Custom_Bulkquick_Edit::column_checkbox_radio( $column, $current, $options, $type );
+		case 'float':
+			if ( false !== strstr( $column, self::$ef_number ) && is_numeric( $result ) )
+				$result = intval( $current );
 			break;
 
-		case self::KEY . 'text':
-			$result = $current;
+		case 'date':
+			if ( false !== strstr( $column, self::$ef_date ) && is_numeric( $result ) )
+				$result = date( get_option( 'date_format' ), $result );
 			break;
 		}
 
@@ -446,16 +219,73 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
+	public static function settings_taxonomies( $taxonomies ) {
+		$ignore = array(
+			EF_User_Groups::taxonomy_key,
+			EF_Editorial_Metadata::metadata_taxonomy,
+		);
+
+		foreach ( $taxonomies as $key => $taxonomy ) {
+			if ( in_array( $key, $ignore ) )
+				unset( $taxonomies[ $key ] );
+		}
+
+		return $taxonomies;
+	}
+
+
+	public static function settings_fields( $fields, $post_type ) {
+		if ( ! is_array( $fields ) )
+			return $fields;
+
+		if ( class_exists( 'EF_Editorial_Metadata' )  ) {
+			$options = get_option( 'edit_flow_editorial_metadata_options' );
+			if ( empty( $options ) || empty( $options->post_types[ $post_type ] ) || 'on' != $options->post_types[ $post_type ] ) 
+				return $fields;
+
+			$efem  = new EF_Editorial_Metadata();
+			$terms = $efem->get_editorial_metadata_terms();
+			foreach ( $terms as $term ) {
+				if ( is_null( self::$ef_taxonomy ) )
+					self::build_edit_flow_structures( $term );
+
+				$meta_key = '_' . self::$ef_taxonomy . '_' . $term->type . '_' . $term->slug;
+				$fields[ $meta_key ] = $term->name;
+			}
+		}
+
+		return $fields;
+	}
+
+
+	public static function build_edit_flow_structures( $term ) {
+		self::$ef_taxonomy = $term->taxonomy;
+		self::$ef_date     = '_' . self::$ef_taxonomy . '_date_';
+		self::$ef_number   = '_' . self::$ef_taxonomy . '_number_';
+	}
+
+
 	/**
 	 *
 	 *
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
-	public static function config_script( $script, $args, $id, $field, $f, $c, $hide ) {
-		$replace = $hide . " || '" . self::KEY . "text' == val";
-		$script  = str_replace( $hide, $replace, $script );
+	public static function save_post( $post_id ) {
+		foreach ( $_POST as $field => $value ) {
+			if ( '' == $value && Custom_Bulkquick_Edit::$bulk_edit_save )
+				continue;
 
-		return $script;
+			$field = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field );
+			if ( false !== strstr( $field, self::$ef_date ) ) {
+				$date = strtotime( $value );
+				update_post_meta( $post_id, $field, $date );
+			}
+
+			if ( false !== strstr( $field, self::$ef_number ) ) {
+				$number = intval( $value );
+				update_post_meta( $post_id, $field, $number );
+			}
+		}
 	}
 
 

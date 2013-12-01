@@ -7,11 +7,11 @@
 
 Edit Flow for Custom Bulk/Quick Edit plugin allows you to modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit.
 
-While the documentation for the [Edit Flow for Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/edit-flow/) can be found at WordPress.org Plugin Directory, here you can browse the source of the project, find and discuss open issues and, even [contribute yourself](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CONTRIBUTING.md).
+While the documentation for the [Edit Flow for Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/cbqe-edit-flow/) can be found at WordPress.org Plugin Directory, here you can browse the source of the project, find and discuss open issues and, even [contribute yourself](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CONTRIBUTING.md).
 
 ## Installation
 
-Here's a [guide on how to install Edit Flow for Custom Bulk/Quick Edit in your WordPress site](http://wordpress.org/plugins/edit-flow/). If you want to run the Git version though, you have two options:
+Here's a [guide on how to install Edit Flow for Custom Bulk/Quick Edit in your WordPress site](http://wordpress.org/plugins/cbqe-edit-flow/). If you want to run the Git version though, you have two options:
 
 * You can clone the GitHub repository: https://github.com/michael-cannon/cbqe-edit-flow.git
 * Download it directly as a ZIP file: https://github.com/michael-cannon/cbqe-edit-flow/archive/master.zip

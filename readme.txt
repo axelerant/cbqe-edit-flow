@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow, seo
 Requires at least: 3.5
 Tested up to: 3.8.0
-Stable tag: 0.0.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,15 +16,15 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit.
 
-= Editable Edit Flow Attributes =
+= Editable Edit Flow Editorial Metadata Attributes =
 
-* Meta Robots Index
-* Meta Robots Advanced
-* Include in Sitemap
-* Sitemap Priority
-* Include in HTML Sitemap
-* Canonical URL
-* 301 Redirect
+* Checkbox
+* Date
+* Location (As input)
+* Number (As float, As int)
+* Paragraph (As textarea)
+* Text (As input)
+* User
 
 = Usage =
 
@@ -56,8 +56,7 @@ If you want to contribute and I hope you do, [contact Aihrus](http://aihr.us/con
 1. Via WordPress Admin > Plugins > Add New, Upload the `cbqe-edit-flow.zip` file
 1. Alternately, unzip `cbqe-edit-flow.zip` the file and then via FTP, upload `cbqe-edit-flow` directory to the `/wp-content/plugins/` directory
 1. Activate the 'Edit Flow for Custom Bulk/Quick Edit' plugin after uploading or through WP Admin > Plugins
-1. Set the license key via WP Admin > Settings > Custom Bulk/Quick, Premium tab, License Key field
-1. License key activation is automatic upon clicking Save Changes.
+1. Configure Edit Flow fields at WP Admin > Settings > Custom Bulk/Quick
 
 
 == Frequently Asked Questions ==
@@ -67,8 +66,8 @@ Please visit the [Edit Flow for Custom Bulk/Quick Edit Knowledge Base](https://a
 
 == Screenshots ==
 
-1. Quick Edit of Edit Flow attributes
-2. Edit Flow columns in Posts view
+1. Edit Flow field settings
+2. Quick Edit of Edit Flow attributes
 3. Bulk Edit of Edit Flow attributes
 
 [gallery]
