@@ -1,6 +1,8 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## master
+* Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
+* Revise readme structure
 
 ## 1.0.2
 * Move screenshots to SVN assets
