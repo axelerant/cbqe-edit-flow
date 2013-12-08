@@ -44,7 +44,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	const EXT_BASE         = 'edit-flow/edit_flow.php';
 	const EXT_VERSION      = '0.7.6';
 	const ID               = 'cbqe-edit-flow';
-	const ITEM_NAME        = 'Edit Flow for Custom Bulk/Quick Edit';
+	const ITEM_NAME        = 'Edit Flow for Custom Bulk/Quick Edit by Aihrus';
 	const PLUGIN_BASE      = 'cbqe-edit-flow/cbqe-edit-flow.php';
 	const SLUG             = 'cbqe_ef_';
 	const VERSION          = '1.0.2';
@@ -176,7 +176,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 	public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
 		$free_base    = self::BASE_PLUGIN_BASE;
-		$free_name    = 'Custom Bulk/Quick Edit';
+		$free_name    = 'Custom Bulk/Quick Edit by Aihrus';
 		$free_slug    = 'custom-bulkquick-edit';
 		$free_version = self::BASE_VERSION;
 		$item_name    = self::ITEM_NAME;
