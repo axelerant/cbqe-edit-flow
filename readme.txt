@@ -26,8 +26,12 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 * Text (As input)
 * User
 
+**Plugin "[Custom Bulk/Quick Edit](http://wordpress.org/plugins/custom-bulkquick-edit/)" and "[Edit Flow](http://wordpress.org/plugins/edit-flow/)" are required to be installed and activated prior to activating "Edit Flow for Custom Bulk/Quick Edit".**
+
 
 == Installation ==
+
+**Plugin "[Custom Bulk/Quick Edit](http://wordpress.org/plugins/custom-bulkquick-edit/)" and "[Edit Flow](http://wordpress.org/plugins/edit-flow/)" are required to be installed and activated prior to activating "Edit Flow for Custom Bulk/Quick Edit".**
 
 = Install Methods =
 
@@ -42,9 +46,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 * Download and unzip [`cbqe-edit-flow.zip`](http://downloads.wordpress.org/plugin/cbqe-edit-flow.zip) locally
 	* Using FTP, upload directory `cbqe-edit-flow` to your website's `/wp-content/plugins/` directory
 
-= Activatation Options =
-
-**Plugin "[Custom Bulk/Quick Edit](http://wordpress.org/plugins/custom-bulkquick-edit/)" and "[Edit Flow](http://wordpress.org/plugins/edit-flow/)" are required to be installed and activated prior to activating "Edit Flow for Custom Bulk/Quick Edit".**
+= Activation Options =
 
 * Activate the "Edit Flow for Custom Bulk/Quick Edit" plugin after uploading
 * Activate the "Edit Flow for Custom Bulk/Quick Edit" plugin through WordPress Admin > Plugins
