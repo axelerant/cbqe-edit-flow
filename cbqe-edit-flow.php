@@ -23,11 +23,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-if ( ! defined( 'CBQE_PLUGIN_DIR' ) )
-	define( 'CBQE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) . '/../custom-bulkquick-edit' );
-
-if ( ! defined( 'CBQE_PLUGIN_DIR_LIB' ) )
-	define( 'CBQE_PLUGIN_DIR_LIB', CBQE_PLUGIN_DIR . '/lib' );
+if ( ! defined( 'CBQE_PLUGIN_DIR' ) || ! defined( 'CBQE_PLUGIN_DIR_LIB' ) ) {
+	// raise notice about required software
+	return false;
+}
 
 if ( ! defined( 'CBQE_EF_PLUGIN_DIR' ) )
 	define( 'CBQE_EF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
