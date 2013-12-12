@@ -35,8 +35,8 @@ define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
-define( 'CBQE_EF_REQ_VERSION', '1.3.4' );
-define( 'CBQE_EF_VERSION', '1.0.2' );
+define( 'CBQE_EF_REQ_VERSION', '1.4.0' );
+define( 'CBQE_EF_VERSION', '1.1.0' );
 
 require CBQE_EF_DIR_LIB . '/requirements.php';
 
