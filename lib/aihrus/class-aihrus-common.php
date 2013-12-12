@@ -87,10 +87,13 @@ EOD;
 
 		$notices = array_unique( $notices );
 		foreach ( $notices as $notice ) {
-			if ( ! is_array( $notice ) )
-				add_action( 'admin_notices', array( static::$class, $notice ) );
-			else
+			if ( function_exists( $notice ) ) {
 				add_action( 'admin_notices', $notice );
+			} elseif ( is_array( $notice ) ) {
+				add_action( 'admin_notices', $notice );
+			} else {
+				add_action( 'admin_notices', array( static::$class, $notice ) );
+			}
 		}
 
 		self::delete_notices();
@@ -127,7 +130,7 @@ EOD;
 
 		$text = sprintf( __( 'Plugin %3$s has been deactivated. Please %1$s %4$s version %2$s or newer before activating %3$s.' ), $link, $free_version, $item_name, $free_name );
 
-		self::notice_error( $text );
+		aihr_notice_error( $text );
 	}
 
 
@@ -153,7 +156,7 @@ EOD;
 
 		$text = sprintf( __( 'Plugin %1$s requires license activation before updating will work. Please activate the license key via %2$s. No license key? See %3$s or purchase %4$s.' ), $item_name, $settings_link, $faq_link, $buy_link );
 
-		self::notice_error( $text );
+		aihr_notice_error( $text );
 	}
 
 
@@ -199,25 +202,7 @@ EOD;
 
 		$text = sprintf( esc_html__( 'Please donate $5 towards ongoing free support and development of the %1$s plugin. %2$s' ), $item_name, self::$donate_button );
 
-		self::notice_updated( $text );
-	}
-
-
-	public static function notice_error( $text ) {
-		self::notice_updated( $text, 'error' );
-	}
-
-
-	public static function notice_updated( $text, $class = 'updated' ) {
-		if ( 'updated' == $class )
-			$class .= ' fade';
-
-		$content  = '';
-		$content .= '<div class="' . $class . '"><p>';
-		$content .= $text;
-		$content .= '</p></div>';
-
-		echo $content;
+		aihr_notice_updated( $text );
 	}
 
 

@@ -1,5 +1,12 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
+## oneone
+* Bring in Aihrus Framework
+* Create constants out of requirements
+* Remove unused methods
+* Separate checking for active plugins and PHP from plugin versions
+* Simplify class constants
+
 ## master
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Revise readme structure

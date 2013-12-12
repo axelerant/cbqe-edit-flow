@@ -23,30 +23,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-if ( ! defined( 'CBQE_PLUGIN_DIR' ) || ! defined( 'CBQE_PLUGIN_DIR_LIB' ) ) {
-	// raise notice about required software
+
+define( 'CBQE_EF_BASE', plugin_basename( __FILE__ ) );
+define( 'CBQE_EF_DIR', plugin_dir_path( __FILE__ ) );
+define( 'CBQE_EF_DIR_LIB', CBQE_EF_DIR . '/lib' );
+define( 'CBQE_EF_EXT_BASE', 'edit-flow/edit_flow.php' );
+define( 'CBQE_EF_EXT_NAME', 'Edit Flow' );
+define( 'CBQE_EF_EXT_SLUG', 'edit-flow' );
+define( 'CBQE_EF_EXT_VERSION', '0.7.6' );
+define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Aihrus' );
+define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
+define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
+define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
+define( 'CBQE_EF_REQ_VERSION', '1.3.4' );
+define( 'CBQE_EF_VERSION', '1.0.2' );
+
+require CBQE_EF_DIR_LIB . '/requirements.php';
+
+if ( ! cbqe_ef_requirements_check() ) {
 	return false;
 }
 
-if ( ! defined( 'CBQE_EF_PLUGIN_DIR' ) )
-	define( 'CBQE_EF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-
-if ( ! defined( 'CBQE_EF_PLUGIN_DIR_LIB' ) )
-	define( 'CBQE_EF_PLUGIN_DIR_LIB', CBQE_EF_PLUGIN_DIR . '/lib' );
-
-require_once CBQE_PLUGIN_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require CBQE_EF_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
 
 class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
-	const BASE_PLUGIN_BASE = 'custom-bulkquick-edit/custom-bulkquick-edit.php';
-	const BASE_VERSION     = '1.3.2';
-	const EXT_BASE         = 'edit-flow/edit_flow.php';
-	const EXT_VERSION      = '0.7.6';
-	const ID               = 'cbqe-edit-flow';
-	const ITEM_NAME        = 'Edit Flow for Custom Bulk/Quick Edit by Aihrus';
-	const PLUGIN_BASE      = 'cbqe-edit-flow/cbqe-edit-flow.php';
-	const SLUG             = 'cbqe_ef_';
-	const VERSION          = '1.0.2';
+	const BASE    = CBQE_EF_BASE;
+	const ID      = 'cbqe-edit-flow';
+	const SLUG    = 'cbqe_ef_';
+	const VERSION = CBQE_EF_VERSION;
 
 	public static $ef_date;
 	public static $ef_fields = array();
@@ -90,7 +95,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::PLUGIN_BASE == $file )
+		if ( self::BASE == $file )
 			array_unshift( $links, Custom_Bulkquick_Edit::$settings_link );
 
 		return $links;
@@ -100,26 +105,12 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function activation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		if ( ! is_plugin_active( Custom_Bulkquick_Edit_Edit_Flow::BASE_PLUGIN_BASE ) ) {
-			deactivate_plugins( Custom_Bulkquick_Edit_Edit_Flow::PLUGIN_BASE );
-			add_action( 'admin_notices', array( 'Custom_Bulkquick_Edit_Edit_Flow', 'notice_version' ) );
-			return;
-		}
-
-		if ( ! is_plugin_active( Custom_Bulkquick_Edit_Edit_Flow::EXT_BASE ) ) {
-			deactivate_plugins( Custom_Bulkquick_Edit_Edit_Flow::PLUGIN_BASE );
-			add_action( 'admin_notices', array( 'Custom_Bulkquick_Edit_Edit_Flow', 'notice_version_ef' ) );
-			return;
-		}
 	}
 
 
 	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		Custom_Bulkquick_Edit_Edit_Flow::delete_notices();
 	}
 
 
@@ -134,64 +125,41 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
-	public static function notice_0_0_1() {
-		$text = sprintf( __( 'If your Edit Flow for Custom Bulk/Quick Edit display has gone to funky town, please <a href="%s">read the FAQ</a> about possible CSS fixes.', 'cbqe-edit-flow' ), 'https://aihrus.zendesk.com/entries/23722573-Major-Changes-Since-2-10-0' );
-
-		self::notice_updated( $text );
-	}
-
-
 	public static function version_check() {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		$valid_version = true;
 
-		$base         = self::PLUGIN_BASE;
-		$good_version = true;
-
-		if ( ! is_plugin_active( $base ) )
-			$good_version = false;
-
-		if ( is_plugin_inactive( self::BASE_PLUGIN_BASE ) || Custom_Bulkquick_Edit::VERSION < self::BASE_VERSION )
-			$good_version = false;
-
-		if ( ! $good_version && is_plugin_active( $base ) ) {
-			deactivate_plugins( $base );
-			self::set_notice( 'notice_version' );
+		$valid_base = true;
+		if ( ! defined( 'CBQE_VERSION' ) ) {
+			$valid_base = false;
+		} elseif ( ! version_compare( CBQE_VERSION, CBQE_EF_REQ_VERSION, '>=' ) ) {
+			$valid_base = false;
 		}
 
-		if ( is_plugin_inactive( self::EXT_BASE ) || EDIT_FLOW_VERSION < self::EXT_VERSION && is_plugin_active( $base ) ) {
-			deactivate_plugins( $base );
-			self::set_notice( 'notice_version_ef' );
-
-			$good_version = false;
+		if ( ! $valid_base ) {
+			$valid_version = false;
+			self::set_notice( 'cbqe_ef_notice_version' );
 		}
 
-		if ( ! $good_version )
+		$valid_ext = true;
+		if ( ! defined( 'EDIT_FLOW_VERSION' ) ) {
+			$valid_base = false;
+			$valid_ext = false;
+		} elseif ( ! version_compare( EDIT_FLOW_VERSION, CBQE_EF_EXT_VERSION, '>=' ) ) {
+			$valid_base = false;
+			$valid_ext = false;
+		}
+
+		if ( ! $valid_ext ) {
+			$valid_version = false;
+			self::set_notice( 'cbqe_ef_notice_version_ef' );
+		}
+
+		if ( ! $valid_version ) {
+			deactivate_plugins( self::BASE );
 			self::check_notices();
+		}
 
-		return $good_version;
-	}
-
-
-
-	public static function notice_version( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
-		$free_base    = self::BASE_PLUGIN_BASE;
-		$free_name    = 'Custom Bulk/Quick Edit by Aihrus';
-		$free_slug    = 'custom-bulkquick-edit';
-		$free_version = self::BASE_VERSION;
-		$item_name    = self::ITEM_NAME;
-
-		parent::notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name );
-	}
-
-
-	public static function notice_version_ef( $free_base = null, $free_name = null, $free_slug = null, $free_version = null, $item_name = null ) {
-		$free_base    = self::EXT_BASE;
-		$free_name    = 'Edit Flow';
-		$free_slug    = 'edit-flow';
-		$free_version = self::EXT_VERSION;
-		$item_name    = self::ITEM_NAME;
-
-		parent::notice_version( $free_base, $free_name, $free_slug, $free_version, $item_name );
+		return $valid_version;
 	}
 
 
@@ -308,8 +276,6 @@ add_action( 'plugins_loaded', 'cbqe_ef_init', 99 );
 function cbqe_ef_init() {
 	if ( ! is_admin() )
 		return;
-
-	require_once CBQE_PLUGIN_DIR_LIB . '/class-custom-bulkquick-edit-settings.php';
 
 	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
 		global $Custom_Bulkquick_Edit_Edit_Flow;
