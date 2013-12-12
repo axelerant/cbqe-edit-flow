@@ -1,8 +1,7 @@
 # CHANGELOG Aihrus Framework
 
 ## master
-* Use `aihr_` as function prefix
-* Add requirements helper
+* Abstract notice helper methods as functions
 * Add TODO
 * Add `add_media` post attachment helper
 * Add `clean_string` trim, strip_shortcodes, and strip_tags a string
@@ -15,6 +14,7 @@
 * Add `verify_nonce( $nonce, $action )`
 * Add abstract class Aihrus_Settings
 * Add abstract class Aihrus_Widget
+* Add requirements helper
 * Add shortcode id helpers
 * Allow reset_defaults in widget
 * BUGFIX Method version not static
@@ -24,6 +24,8 @@
 * Rename no_code to show_code
 * Revise create_link parameters
 * Settings link with null post_type
+* Switch from require_once to require file inclusion
+* Use `aihr_` as function prefix
 * Widget title uses create_link
 
 ## 0.0.0
