@@ -10,7 +10,7 @@
 * Separate checking for active plugins and PHP from plugin versions
 * Simplify class constants
 * WONTFIX #3 Not needed
-* WONTFIX #6 Needed
+* WONTFIX #5 Needed
 
 ## master
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
