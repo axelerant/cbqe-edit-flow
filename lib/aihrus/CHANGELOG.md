@@ -1,6 +1,8 @@
 # CHANGELOG Aihrus Framework
 
 ## master
+* Use `aihr_` as function prefix
+* Add requirements helper
 * Add TODO
 * Add `add_media` post attachment helper
 * Add `clean_string` trim, strip_shortcodes, and strip_tags a string
