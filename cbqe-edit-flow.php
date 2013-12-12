@@ -63,6 +63,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public function __construct() {
+		parent::__construct();
+
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'init', array( __CLASS__, 'init' ) );
 	}
@@ -74,10 +76,10 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function admin_init() {
-		if ( ! self::version_check() )
-			return;
-
 		add_filter( 'plugin_action_links', array( __CLASS__, 'plugin_action_links' ), 10, 2 );
+		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
+
+		self::update();
 
 		if ( ! Custom_Bulkquick_Edit::do_load() )
 			return;
@@ -99,6 +101,25 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			array_unshift( $links, Custom_Bulkquick_Edit::$settings_link );
 
 		return $links;
+	}
+
+
+	public static function plugin_row_meta( $input, $file ) {
+		if ( self::BASE != $file )
+			return $input;
+
+		$disable_donate = cbqe_get_option( 'disable_donate' );
+		if ( $disable_donate )
+			return $input;
+
+		$links = array(
+			self::$donate_link,
+			'<a href="http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
+		);
+
+		$input = array_merge( $input, $links );
+
+		return $input;
 	}
 
 
@@ -142,10 +163,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		$valid_ext = true;
 		if ( ! defined( 'EDIT_FLOW_VERSION' ) ) {
-			$valid_base = false;
 			$valid_ext = false;
 		} elseif ( ! version_compare( EDIT_FLOW_VERSION, CBQE_EF_EXT_VERSION, '>=' ) ) {
-			$valid_base = false;
 			$valid_ext = false;
 		}
 
@@ -253,6 +272,34 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 				update_post_meta( $post_id, $field, $number );
 			}
 		}
+	}
+
+
+	public static function update() {
+		$prior_version = cbqe_get_option( self::SLUG . 'admin_notices' );
+		if ( $prior_version ) {
+			if ( $prior_version < '0.0.1' )
+				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
+
+			if ( $prior_version < self::VERSION )
+				do_action( 'cbqe_ef_update' );
+
+			cbqe_set_option( self::SLUG . 'admin_notices' );
+		}
+
+		// display donate on major/minor version release
+		$donate_version = cbqe_get_option( self::SLUG . 'donate_version', false );
+		if ( ! $donate_version || ( $donate_version != self::VERSION && preg_match( '#\.0$#', self::VERSION ) ) ) {
+			self::set_notice( 'notice_donate' );
+			cbqe_set_option( self::SLUG . 'donate_version', self::VERSION );
+		}
+	}
+
+
+	public static function notice_donate( $disable_donate = null, $item_name = null ) {
+		$disable_donate = cbqe_get_option( 'disable_donate' );
+
+		parent::notice_donate( $disable_donate, CBQE_EF_NAME );
 	}
 
 
