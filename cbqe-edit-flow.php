@@ -38,13 +38,13 @@ define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
 define( 'CBQE_EF_REQ_VERSION', '1.4.0' );
 define( 'CBQE_EF_VERSION', '1.1.0' );
 
-require CBQE_EF_DIR_LIB . '/requirements.php';
+require_once CBQE_EF_DIR_LIB . '/requirements.php';
 
 if ( ! cbqe_ef_requirements_check() ) {
 	return false;
 }
 
-require CBQE_EF_DIR_LIB . '/aihrus/class-aihrus-common.php';
+require_once CBQE_EF_DIR_LIB . '/aihrus/class-aihrus-common.php';
 
 
 class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
