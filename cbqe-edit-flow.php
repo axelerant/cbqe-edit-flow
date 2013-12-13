@@ -144,8 +144,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		cbqe_set_option( self::SLUG . 'donate_version' );
 	}
 
 
