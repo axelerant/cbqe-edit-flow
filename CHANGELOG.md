@@ -3,12 +3,14 @@
 ## oneone
 * BUGFIX #1
 * BUGFIX #2
+* BUGFIX Donate notice shows after saving settings
 * Bring in Aihrus Framework
 * Create constants out of requirements
 * FEATURE #6 Enable donate_notice
 * Remove unused methods
 * Separate checking for active plugins and PHP from plugin versions
 * Simplify class constants
+* Update readme regarding buy Premium for date and numeric fields
 * WONTFIX #3 Not needed
 * WONTFIX #5 Needed
 

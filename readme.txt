@@ -19,9 +19,9 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 = Editable Edit Flow Editorial Metadata Attributes =
 
 * Checkbox
-* Date
+* Date - Date picker requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * Location (As input)
-* Number (As float, As int)
+* Number - As float or int requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * Paragraph (As textarea)
 * Text (As input)
 * User
@@ -75,6 +75,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 = Most Common Issues =
 
+* Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * [How do I add custom columns to my edit page?](https://aihrus.zendesk.com/entries/24800411)
 * [How do you configure options?](https://aihrus.zendesk.com/entries/24911342)
 * [Where can I find working samples?](https://aihrus.zendesk.com/entries/27667723)

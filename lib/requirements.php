@@ -21,7 +21,7 @@ require CBQE_EF_DIR_LIB . '/aihrus/requirements.php';
 
 function cbqe_ef_requirements_check() {
 	$valid_requirements = true;
-	if ( ! aihr_check_php( CBQE_EF_BASE ) ) {
+	if ( ! aihr_check_php( CBQE_EF_BASE, CBQE_EF_NAME ) ) {
 		$valid_requirements = false;
 	}
 

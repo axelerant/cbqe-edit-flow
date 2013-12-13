@@ -85,6 +85,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			return;
 
 		add_action( 'cbqe_save_post', array( __CLASS__, 'save_post' ) );
+		add_action( 'cbqe_validate_settings', array( __CLASS__, 'validate_settings' ), 10, 2 );
 		add_filter( 'cbqe_manage_posts_custom_column_field_type', array( __CLASS__, 'manage_posts_custom_column_field_type' ), 10, 4 );
 		add_filter( 'cbqe_settings_fields', array( __CLASS__, 'settings_fields' ), 10, 2 );
 		add_filter( 'cbqe_settings_taxonomies', array( __CLASS__, 'settings_taxonomies' ) );
@@ -132,6 +133,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		Custom_Bulkquick_Edit::delete_notices();
 	}
 
 
@@ -143,6 +146,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function uninstall() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
+
+		cbqe_set_option( self::SLUG . 'donate_version' );
 	}
 
 
@@ -303,6 +308,20 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
+	public static function validate_settings( $input, $errors = array(), $do_errors = false ) {
+		$input[ self::SLUG . 'donate_version'] = self::VERSION;
+
+		if ( empty( $do_errors ) ) {
+			$validated = $input;
+		} else {
+			$validated = array(
+				'input' => $input,
+				'errors' => $errors,
+			);
+		}
+
+		return $validated;
+	}
 }
 
 
@@ -311,7 +330,7 @@ register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 
 register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'uninstall' ) );
 
 
-add_action( 'plugins_loaded', 'cbqe_ef_init', 99 );
+add_action( 'plugins_loaded', 'cbqe_ef_init' );
 
 
 /**
