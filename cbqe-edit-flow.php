@@ -133,8 +133,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function deactivation() {
 		if ( ! current_user_can( 'activate_plugins' ) )
 			return;
-
-		Custom_Bulkquick_Edit::delete_notices();
 	}
 
 

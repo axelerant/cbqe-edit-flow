@@ -4,6 +4,7 @@
 * BUGFIX #1
 * BUGFIX #2
 * BUGFIX Donate notice shows after saving settings
+* BUGFIX No notices on deactivation
 * Bring in Aihrus Framework
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Create constants out of requirements
