@@ -7,6 +7,7 @@
 * Bring in Aihrus Framework
 * Create constants out of requirements
 * FEATURE #6 Enable donate_notice
+* Implement WordPress version checking
 * Remove unused methods
 * Separate checking for active plugins and PHP from plugin versions
 * Simplify class constants

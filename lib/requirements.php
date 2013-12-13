@@ -25,6 +25,10 @@ function cbqe_ef_requirements_check() {
 		$valid_requirements = false;
 	}
 
+	if ( ! aihr_check_wp( CBQE_EF_BASE, CBQE_EF_NAME ) ) {
+		$valid_requirements = false;
+	}
+
 	if ( ! is_plugin_active( CBQE_EF_REQ_BASE ) ) {
 		$valid_requirements = false;
 		add_action( 'admin_notices', 'cbqe_ef_notice_version' );
