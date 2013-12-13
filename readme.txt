@@ -67,7 +67,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 	* Select plugins for update, click "Update Plugins"
 * Using FTP
 	* Download and unzip [`cbqe-edit-flow.zip`](http://downloads.wordpress.org/plugin/cbqe-edit-flow.zip) locally
-	* FTP, upload directory `cbqe-edit-flow` to your website's `/wp-content/plugins/` directory
+	* Upload directory `cbqe-edit-flow` to your website's `/wp-content/plugins/` directory
 	* Be sure to overwrite your existing `cbqe-edit-flow` folder contents
 
 
