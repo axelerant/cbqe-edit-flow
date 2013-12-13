@@ -1,23 +1,22 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
-## oneone
+## master
 * BUGFIX #1
 * BUGFIX #2
 * BUGFIX Donate notice shows after saving settings
 * Bring in Aihrus Framework
+* Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Create constants out of requirements
 * FEATURE #6 Enable donate_notice
 * Implement WordPress version checking
 * Remove unused methods
+* Revise readme structure
 * Separate checking for active plugins and PHP from plugin versions
 * Simplify class constants
+* Tested up to 3.9.0
 * Update readme regarding buy Premium for date and numeric fields
 * WONTFIX #3 Not needed
 * WONTFIX #5 Needed
-
-## master
-* Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
-* Revise readme structure
 
 ## 1.0.2
 * Move screenshots to SVN assets
