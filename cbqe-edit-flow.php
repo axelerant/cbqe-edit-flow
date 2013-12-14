@@ -233,6 +233,10 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			$efem  = new EF_Editorial_Metadata();
 			$terms = $efem->get_editorial_metadata_terms();
 			foreach ( $terms as $term ) {
+				// fixme - not needed, pull taxonomy directly whether provided or not
+				if ( ! empty( $term->viewable ) )
+					continue;
+
 				if ( is_null( self::$ef_taxonomy ) )
 					self::build_edit_flow_structures( $term );
 
@@ -263,6 +267,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 				continue;
 
 			$field = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field );
+			// fixme lookup field type
+			// $field_type = self::is_field_enabled( $post->post_type, $column );
+			// $field_type = self::check_field_type( $field_type, $column );
 			if ( false !== strstr( $field, self::$ef_date ) ) {
 				$date = strtotime( $value );
 				update_post_meta( $post_id, $field, $date );

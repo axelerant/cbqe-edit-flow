@@ -1,5 +1,9 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
+## ef76
+* BUG #6 Save EF field per type
+* BUG #7 Update fields from EF taxonomy directly
+
 ## master
 * BUGFIX #1
 * BUGFIX #2
