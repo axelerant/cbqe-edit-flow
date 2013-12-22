@@ -118,7 +118,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		$links = array(
 			self::$donate_link,
-			'<a href="http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/">Purchase Custom Bulk/Quick Edit Premium</a>',
+			CBQE_PREMIUM_LINK,
 		);
 
 		$input = array_merge( $input, $links );
