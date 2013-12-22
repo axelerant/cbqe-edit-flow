@@ -2,7 +2,7 @@
 
 ## ef80
 * BUG #7 Update fields from EF taxonomy directly
-* BUGFIX #6 Save EF field per type
+* BUGFIX #8 Save EF field per type
 * Correct meta key save and viewing for BUG #7
 
 ## master
