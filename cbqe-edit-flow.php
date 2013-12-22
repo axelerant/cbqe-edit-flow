@@ -53,8 +53,11 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	const SLUG    = 'cbqe_ef_';
 	const VERSION = CBQE_EF_VERSION;
 
+	public static $custom_fields = array();
+	public static $ef_checkbox;
 	public static $ef_date;
 	public static $ef_fields = array();
+	public static $ef_metadata = 'editorial-metadata';
 	public static $ef_number;
 	public static $ef_taxonomy;
 
@@ -86,7 +89,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		add_action( 'cbqe_save_post', array( __CLASS__, 'save_post' ) );
 		add_action( 'cbqe_validate_settings', array( __CLASS__, 'validate_settings' ), 10, 2 );
-		add_filter( 'cbqe_manage_posts_custom_column_field_type', array( __CLASS__, 'manage_posts_custom_column_field_type' ), 10, 4 );
+		add_filter( 'cbqe_posts_custom_column', array( __CLASS__, 'posts_custom_column' ), 10, 4 );
 		add_filter( 'cbqe_settings_fields', array( __CLASS__, 'settings_fields' ), 10, 2 );
 		add_filter( 'cbqe_settings_taxonomies', array( __CLASS__, 'settings_taxonomies' ) );
 	}
@@ -188,18 +191,27 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
-	public static function manage_posts_custom_column_field_type( $current, $field_type, $column, $post_id ) {
-		$result = $current;
-		switch ( $field_type ) {
-		case 'float':
-			if ( false !== strstr( $column, self::$ef_number ) && is_numeric( $result ) )
-				$result = intval( $current );
-			break;
+	public static function posts_custom_column( $current, $column, $post_id ) {
+		if ( false === strstr( $column, self::$ef_metadata ) )
+			return $current;
 
-		case 'date':
-			if ( false !== strstr( $column, self::$ef_date ) && is_numeric( $result ) )
-				$result = date( get_option( 'date_format' ), $result );
-			break;
+		if ( ! in_array( $column, array_keys( self::$custom_fields ) ) )
+			return $current;
+
+		$meta_key = self::$custom_fields[ $column ];
+		$result   = get_post_meta( $post_id, $meta_key, true );
+
+		if ( false !== strstr( $meta_key, self::$ef_checkbox ) ) {
+			$post_type = get_post_type( $post_id );
+			$options   = Custom_Bulkquick_Edit::get_field_config( $post_type, $column );
+			if ( ! empty( $options ) )
+				$options = array( $options );
+
+			$result = Custom_Bulkquick_Edit::column_checkbox_radio( $column, $result, $options, 'checkbox' );
+		} elseif ( false !== strstr( $meta_key, self::$ef_date ) ) {
+			$result = date( get_option( 'date_format' ), $result );
+		} elseif ( false !== strstr( $meta_key, self::$ef_number ) ) {
+			$result = intval( $result );
 		}
 
 		return $result;
@@ -225,24 +237,28 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		if ( ! is_array( $fields ) )
 			return $fields;
 
-		if ( class_exists( 'EF_Editorial_Metadata' )  ) {
-			$options = get_option( 'edit_flow_editorial_metadata_options' );
-			if ( empty( $options ) || empty( $options->post_types[ $post_type ] ) || 'on' != $options->post_types[ $post_type ] ) 
-				return $fields;
+		if ( ! class_exists( 'EF_Editorial_Metadata' ) )
+			return $fields;
 
-			$efem  = new EF_Editorial_Metadata();
-			$terms = $efem->get_editorial_metadata_terms();
-			foreach ( $terms as $term ) {
-				// fixme - not needed, pull taxonomy directly whether provided or not
-				if ( ! empty( $term->viewable ) )
-					continue;
+		$options = get_option( 'edit_flow_editorial_metadata_options' );
+		if ( empty( $options ) || empty( $options->post_types[ $post_type ] ) || 'on' != $options->post_types[ $post_type ] ) 
+			return $fields;
 
-				if ( is_null( self::$ef_taxonomy ) )
-					self::build_edit_flow_structures( $term );
+		$efem  = new EF_Editorial_Metadata();
+		$terms = $efem->get_editorial_metadata_terms();
+		foreach ( $terms as $term ) {
+			// fixme - not needed, pull taxonomy directly whether provided or not
+			if ( ! empty( $term->viewable ) )
+				continue;
 
-				$meta_key = '_' . self::$ef_taxonomy . '_' . $term->type . '_' . $term->slug;
-				$fields[ $meta_key ] = $term->name;
-			}
+			if ( is_null( self::$ef_taxonomy ) )
+				self::build_edit_flow_structures( $term );
+
+			$show_key = self::$ef_metadata . '-' . $term->slug;
+			$meta_key = '_' . self::$ef_taxonomy . '_' . $term->type . '_' . $term->slug;
+
+			$fields[ $show_key ]              = $term->name;
+			self::$custom_fields[ $show_key ] = $meta_key;
 		}
 
 		return $fields;
@@ -251,6 +267,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 	public static function build_edit_flow_structures( $term ) {
 		self::$ef_taxonomy = $term->taxonomy;
+		self::$ef_checkbox = '_' . self::$ef_taxonomy . '_checkbox_';
 		self::$ef_date     = '_' . self::$ef_taxonomy . '_date_';
 		self::$ef_number   = '_' . self::$ef_taxonomy . '_number_';
 	}
@@ -262,23 +279,23 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.Superglobals)
 	 */
 	public static function save_post( $post_id ) {
-		foreach ( $_POST as $field => $value ) {
+		foreach ( self::$custom_fields as $show_key => $meta_key ) {
+			$post_key = Custom_Bulkquick_Edit::SLUG . $show_key;
+			if ( ! isset( $_POST[ $post_key ] ) )
+				continue;
+
+			$value = self::clean_string( $_POST[ $post_key ] );
 			if ( '' == $value && Custom_Bulkquick_Edit::$bulk_edit_save )
 				continue;
 
-			$field = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field );
-			// fixme lookup field type
-			// $field_type = self::is_field_enabled( $post->post_type, $column );
-			// $field_type = self::check_field_type( $field_type, $column );
-			if ( false !== strstr( $field, self::$ef_date ) ) {
-				$date = strtotime( $value );
-				update_post_meta( $post_id, $field, $date );
+			if ( false !== strstr( $meta_key, self::$ef_date ) ) {
+				$value = strtotime( $value );
+			} elseif ( false !== strstr( $meta_key, self::$ef_number ) ) {
+				$value = intval( $value );
 			}
 
-			if ( false !== strstr( $field, self::$ef_number ) ) {
-				$number = intval( $value );
-				update_post_meta( $post_id, $field, $number );
-			}
+			update_post_meta( $post_id, $meta_key, $value );
+			delete_post_meta( $post_id, $show_key );
 		}
 	}
 
@@ -312,7 +329,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function validate_settings( $input, $errors = array(), $do_errors = false ) {
-		$input[ self::SLUG . 'donate_version'] = self::VERSION;
+		$input[ self::SLUG . 'donate_version' ] = self::VERSION;
 
 		if ( empty( $do_errors ) ) {
 			$validated = $input;
