@@ -15,6 +15,7 @@
 * Bring in Aihrus Framework
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Create constants out of requirements
+* Disable purchase premium links if premium is active
 * FEATURE #6 Enable donate_notice
 * Implement WordPress version checking
 * Remove unused methods
