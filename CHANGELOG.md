@@ -1,7 +1,7 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## ef80
-* BUG #7 Update fields from EF taxonomy directly
+* BUGFIX #7 Update fields from EF taxonomy directly
 * BUGFIX #8 Save EF field per type
 * Correct meta key save and viewing for BUG #7
 
