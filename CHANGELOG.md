@@ -1,5 +1,8 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
+## ef_date
+* Work on #9 Time not supported in date editing
+
 ## ef80
 * BUGFIX #7 Update fields from EF taxonomy directly
 * BUGFIX #8 Save EF field per type

@@ -418,7 +418,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			$js = self::get_js_datepicker( $post_type, $field_name );
 
 			$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
-			$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			// $scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).attr( 'value', {$field_name_var} );";
 			$scripts_quick[ $column_name . '3' ] = $js;
 			break;
 		}
@@ -437,14 +438,14 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 				alwaysSetTime: false,
 				controlType: 'select',
 				dateFormat: '{$date_format}',
-				firstDay: ef_week_first_day
+				firstDay: ef_week_first_day,
 			});";
 		} else {
 			$js = "jQuery( '#bulk-edit .date-time-pick' ).datetimepicker({
 				alwaysSetTime: false,
 				controlType: 'select',
 				dateFormat: '{$date_format}',
-				firstDay: ef_week_first_day
+				firstDay: ef_week_first_day,
 			});";
 		}
 
