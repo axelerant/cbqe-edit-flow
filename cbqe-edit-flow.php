@@ -89,7 +89,14 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		add_action( 'cbqe_save_post', array( __CLASS__, 'save_post' ) );
 		add_action( 'cbqe_validate_settings', array( __CLASS__, 'validate_settings' ), 10, 2 );
+		add_filter( 'cbqe_configuration_default', array( __CLASS__, 'configuration_default' ), 10, 3 );
+		add_filter( 'cbqe_manage_posts_custom_column_field_type', array( __CLASS__, 'manage_posts_custom_column_field_type' ), 10, 4 );
 		add_filter( 'cbqe_posts_custom_column', array( __CLASS__, 'posts_custom_column' ), 10, 4 );
+		add_filter( 'cbqe_quick_edit_custom_box_field', array( __CLASS__, 'quick_edit_custom_box_field' ), 10, 5 );
+		add_filter( 'cbqe_quick_scripts_bulk', array( __CLASS__, 'scripts_bulk' ), 10, 6 );
+		add_filter( 'cbqe_quick_scripts_extra', array( __CLASS__, 'scripts_extra' ), 10, 6 );
+		add_filter( 'cbqe_quick_scripts_quick', array( __CLASS__, 'scripts_quick' ), 10, 6 );
+		add_filter( 'cbqe_settings_as_types', array( __CLASS__, 'settings_as_types' ) );
 		add_filter( 'cbqe_settings_fields', array( __CLASS__, 'settings_fields' ), 10, 2 );
 		add_filter( 'cbqe_settings_taxonomies', array( __CLASS__, 'settings_taxonomies' ) );
 	}
@@ -340,6 +347,147 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		}
 
 		return $validated;
+	}
+
+
+	public static function settings_as_types( $as_types ) {
+		$as_types['ef_date'] = esc_html__( 'As EF date', 'custom-bulkquick-edit-premium' );
+
+		return $as_types;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function configuration_default( $default, $id, $type ) {
+		switch ( $type ) {
+		case 'ef_date':
+			$default = 'M dd yy';
+			break;
+		}
+
+		return $default;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function scripts_bulk( $scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
+		switch ( $field_type ) {
+		case 'ef_date':
+			$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]' ).val()";
+			break;
+		}
+
+		return $scripts_bulk;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function scripts_extra( $scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
+		switch ( $field_type ) {
+		case 'ef_date':
+			$js = self::get_js_datepicker( $post_type, $field_name, 'bulk' );
+
+			$scripts_extra[ $column_name ] = $js;
+			break;
+		}
+
+		return $scripts_extra;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function scripts_quick( $scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
+		switch ( $field_type ) {
+		case 'ef_date':
+			$js = self::get_js_datepicker( $post_type, $field_name );
+
+			$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+			$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+			$scripts_quick[ $column_name . '3' ] = $js;
+			break;
+		}
+
+		return $scripts_quick;
+	}
+
+
+	public static function get_js_datepicker( $post_type, $field_name, $mode = 'quick' ) {
+		$key         = Custom_Bulkquick_Edit::get_field_key( $post_type, $field_name );
+		$key        .= Custom_Bulkquick_Edit_Settings::CONFIG;
+		$date_format = cbqe_get_option( $key );
+
+		if ( 'quick' == $mode  ) {
+			$js = "jQuery( '.date-time-pick', edit_row ).datetimepicker({
+				alwaysSetTime: false,
+				controlType: 'select',
+				dateFormat: '{$date_format}',
+				firstDay: ef_week_first_day
+			});";
+		} else {
+			$js = "jQuery( '#bulk-edit .date-time-pick' ).datetimepicker({
+				alwaysSetTime: false,
+				controlType: 'select',
+				dateFormat: '{$date_format}',
+				firstDay: ef_week_first_day
+			});";
+		}
+
+		return $js;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function quick_edit_custom_box_field( $input, $field_type, $field_name, $options, $bulk_mode ) {
+		$column_name    = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field_name );
+		$field_name_var = str_replace( '-', '_', $field_name );
+
+		$result = $input;
+		switch ( $field_type ) {
+		case 'ef_date':
+			$result = '<input type="text" class="date-time-pick" name="' . $field_name . '" autocomplete="off" />';
+			break;
+		}
+
+		return $result;
+	}
+
+
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
+	public static function manage_posts_custom_column_field_type( $current, $field_type, $column, $post_id ) {
+		global $post;
+
+		$result = $current;
+		switch ( $field_type ) {
+		case 'ef_date':
+			$result = $current;
+			break;
+		}
+
+		return $result;
 	}
 }
 
