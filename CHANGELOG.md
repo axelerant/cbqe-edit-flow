@@ -1,4 +1,4 @@
-# CHANGELOG Edit Flow for Custom Bulk/Quick Edit
+# CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
 ## ef_date
 * Work on #9 Time not supported in date editing

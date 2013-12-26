@@ -30,7 +30,7 @@ define( 'CBQE_EF_DIR_LIB', CBQE_EF_DIR . '/lib' );
 define( 'CBQE_EF_EXT_BASE', 'edit-flow/edit_flow.php' );
 define( 'CBQE_EF_EXT_NAME', 'Edit Flow' );
 define( 'CBQE_EF_EXT_SLUG', 'edit-flow' );
-define( 'CBQE_EF_EXT_VERSION', '0.7.6' );
+define( 'CBQE_EF_EXT_VERSION', '0.8.0' );
 define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
