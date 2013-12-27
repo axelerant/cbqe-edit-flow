@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.5
 Tested up to: 3.9.0
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,9 +19,9 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 = Editable Edit Flow Editorial Metadata Attributes =
 
 * Checkbox
-* Date - Date picker requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Date - Uses date and picker
 * Location (As input)
-* Number - As float or int requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Number - (As input) As int requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * Paragraph (As textarea)
 * Text (As input)
 * User

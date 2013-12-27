@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit by Aihrus - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Aihrus.
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -56,7 +56,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static $custom_fields = array();
 	public static $ef_checkbox;
 	public static $ef_date;
-	public static $ef_fields = array();
+	public static $ef_fields   = array();
 	public static $ef_metadata = 'editorial-metadata';
 	public static $ef_number;
 	public static $ef_taxonomy;
@@ -115,6 +115,11 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.LongVariable)
+	 */
 	public static function plugin_row_meta( $input, $file ) {
 		if ( self::BASE != $file )
 			return $input;
@@ -228,6 +233,11 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 */
 	public static function settings_taxonomies( $taxonomies ) {
 		$ignore = array(
 			EF_User_Groups::taxonomy_key,
@@ -455,9 +465,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function quick_edit_custom_box_field( $input, $field_type, $field_name, $options, $bulk_mode ) {
-		$column_name    = str_replace( Custom_Bulkquick_Edit::SLUG, '', $field_name );
-		$field_name_var = str_replace( '-', '_', $field_name );
-
 		$result = $input;
 		switch ( $field_type ) {
 			case 'ef_date':
@@ -475,8 +482,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function manage_posts_custom_column_field_type( $current, $field_type, $column, $post_id ) {
-		global $post;
-
 		$result = $current;
 		switch ( $field_type ) {
 			case 'ef_date':

@@ -1,6 +1,8 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.1.0
 * Bring in Aihrus Framework
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Correct meta key save and viewing for BUG #7
