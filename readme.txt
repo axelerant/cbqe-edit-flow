@@ -14,7 +14,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 == Description ==
 
-Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit [by Aihrus](http://aihr.us/about-aihrus/).
+Modify Edit Flow options via bulk and quick edit panels in conjunction with [Custom Bulk/Quick Edit by Aihrus](http://aihr.us/about-aihrus/).
 
 = Editable Edit Flow Editorial Metadata Attributes =
 
