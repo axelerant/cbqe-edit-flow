@@ -1,4 +1,7 @@
-# CHANGELOG Edit Flow for Custom Bulk/Quick Edit
+# CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
+
+## ef_date
+* RESOLVE #9 Time not supported in date editing
 
 ## master
 * Bring in Aihrus Framework
