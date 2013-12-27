@@ -1,12 +1,6 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## master
-* BUGFIX #1 On delete error
-* BUGFIX #2 On activate error - no cbqe free installed
-* BUGFIX #7 Update fields from EF taxonomy directly
-* BUGFIX #8 Save EF field per type
-* BUGFIX Donate notice shows after saving settings
-* BUGFIX No notices on deactivation
 * Bring in Aihrus Framework
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
 * Correct meta key save and viewing for BUG #7
@@ -15,6 +9,13 @@
 * Disable purchase premium links if premium is active
 * FEATURE #6 Enable donate_notice
 * Implement WordPress version checking
+* RESOLVE #1 On delete error
+* RESOLVE #2 On activate error - no cbqe free installed
+* RESOLVE #4 Ensure single instance of item
+* RESOLVE #7 Update fields from EF taxonomy directly
+* RESOLVE #8 Save EF field per type
+* RESOLVE Donate notice shows after saving settings
+* RESOLVE No notices on deactivation
 * Remove unused methods
 * Revise readme structure
 * Separate checking for active plugins and PHP from plugin versions
