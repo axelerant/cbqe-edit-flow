@@ -219,7 +219,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 			$result = Custom_Bulkquick_Edit::column_checkbox_radio( $column, $result, $options, 'checkbox' );
 		} elseif ( false !== strstr( $meta_key, self::$ef_date ) ) {
-			$result = date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $result );
+			$result = date( get_option( 'date_format' ) . ' H:i', $result );
 		} elseif ( false !== strstr( $meta_key, self::$ef_number ) ) {
 			$result = intval( $result );
 		}
