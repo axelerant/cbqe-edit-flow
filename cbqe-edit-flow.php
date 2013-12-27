@@ -24,6 +24,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+define( 'CBQE_EF_AIHR_VERSION', '1.0.0' );
 define( 'CBQE_EF_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_EF_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CBQE_EF_DIR_LIB', CBQE_EF_DIR . '/lib' );
@@ -361,7 +362,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function settings_as_types( $as_types ) {
-		$as_types['ef_date'] = esc_html__( 'As EF date', 'custom-bulkquick-edit-premium' );
+		$as_types['ef_date'] = esc_html__( 'As EF date', 'custom-bulkquick-edit-premium', 'cbqe-edit-flow' );
 
 		return $as_types;
 	}
