@@ -1,8 +1,5 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
-## ef_date
-* RESOLVE #9 Time not supported in date editing
-
 ## master
 * Bring in Aihrus Framework
 * Convert TODO to https://github.com/michael-cannon/cbqe-edit-flow/issues
@@ -17,6 +14,7 @@
 * RESOLVE #4 Ensure single instance of item
 * RESOLVE #7 Update fields from EF taxonomy directly
 * RESOLVE #8 Save EF field per type
+* RESOLVE #9 Time not supported in date editing
 * RESOLVE Donate notice shows after saving settings
 * RESOLVE No notices on deactivation
 * Remove unused methods
