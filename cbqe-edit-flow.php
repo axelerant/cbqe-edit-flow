@@ -170,7 +170,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		$valid_version = true;
 
 		$valid_base = true;
-		if ( ! defined( 'CBQE_VERSION' ) ) {
+		if ( ! is_plugin_active( CBQE_EF_REQ_BASE ) ) {
+			$valid_base = false;
+		} elseif ( ! defined( 'CBQE_VERSION' ) ) {
 			$valid_base = false;
 		} elseif ( ! version_compare( CBQE_VERSION, CBQE_EF_REQ_VERSION, '>=' ) ) {
 			$valid_base = false;
