@@ -397,7 +397,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function scripts_extra( $scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
 		switch ( $field_type ) {
 			case 'ef_date':
-				$js = self::get_js_datepicker( $post_type, $field_name, 'bulk' );
+				$js = self::get_js_datetimepicker( $post_type, $field_name, 'bulk' );
 
 				$scripts_extra[ $column_name ] = $js;
 				break;
@@ -415,7 +415,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function scripts_quick( $scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
 		switch ( $field_type ) {
 			case 'ef_date':
-				$js = self::get_js_datepicker( $post_type, $field_name );
+				$js = self::get_js_datetimepicker( $post_type, $field_name );
 
 				$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
 				$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
@@ -427,24 +427,21 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
-	public static function get_js_datepicker( $post_type, $field_name, $mode = 'quick' ) {
+	public static function get_js_datetimepicker( $post_type, $field_name, $mode = 'quick' ) {
 		$key         = Custom_Bulkquick_Edit::get_field_key( $post_type, $field_name );
 		$key        .= Custom_Bulkquick_Edit_Settings::CONFIG;
 		$date_format = cbqe_get_option( $key );
+		$week_start  = get_option( 'start_of_week' );
 
 		if ( 'quick' == $mode  ) {
 			$js = "jQuery( '.datetimepicker', edit_row ).datetimepicker({
-				alwaysSetTime: false,
-				controlType: 'select',
 				dateFormat: '{$date_format}',
-				firstDay: ef_week_first_day,
+				firstDay: '{$week_start}',
 			});";
 		} else {
 			$js = "jQuery( '#bulk-edit .datetimepicker' ).datetimepicker({
-				alwaysSetTime: false,
-				controlType: 'select',
 				dateFormat: '{$date_format}',
-				firstDay: ef_week_first_day,
+				firstDay: '{$week_start}',
 			});";
 		}
 
