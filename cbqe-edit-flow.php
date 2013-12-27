@@ -504,7 +504,7 @@ add_action( 'plugins_loaded', 'cbqe_ef_init' );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function cbqe_ef_init() {
-	if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
+	if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
 		return;
 
 	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
