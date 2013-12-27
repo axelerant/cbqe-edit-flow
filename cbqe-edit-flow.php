@@ -219,7 +219,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 			$result = Custom_Bulkquick_Edit::column_checkbox_radio( $column, $result, $options, 'checkbox' );
 		} elseif ( false !== strstr( $meta_key, self::$ef_date ) ) {
-			$result = date( get_option( 'date_format' ), $result );
+			$result = date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $result );
 		} elseif ( false !== strstr( $meta_key, self::$ef_number ) ) {
 			$result = intval( $result );
 		}
@@ -364,9 +364,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 */
 	public static function configuration_default( $default, $id, $type ) {
 		switch ( $type ) {
-		case 'ef_date':
-			$default = 'M dd yy';
-			break;
+			case 'ef_date':
+				$default = 'M dd yy';
+				break;
 		}
 
 		return $default;
@@ -380,9 +380,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 */
 	public static function scripts_bulk( $scripts_bulk, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
 		switch ( $field_type ) {
-		case 'ef_date':
-			$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]' ).val()";
-			break;
+			case 'ef_date':
+				$scripts_bulk[ $column_name ] = "'{$field_name}': bulk_row.find( 'input[name={$field_name}]' ).val()";
+				break;
 		}
 
 		return $scripts_bulk;
@@ -396,11 +396,11 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 */
 	public static function scripts_extra( $scripts_extra, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
 		switch ( $field_type ) {
-		case 'ef_date':
-			$js = self::get_js_datepicker( $post_type, $field_name, 'bulk' );
+			case 'ef_date':
+				$js = self::get_js_datepicker( $post_type, $field_name, 'bulk' );
 
-			$scripts_extra[ $column_name ] = $js;
-			break;
+				$scripts_extra[ $column_name ] = $js;
+				break;
 		}
 
 		return $scripts_extra;
@@ -414,14 +414,13 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 */
 	public static function scripts_quick( $scripts_quick, $post_type, $column_name, $field_name, $field_type, $field_name_var ) {
 		switch ( $field_type ) {
-		case 'ef_date':
-			$js = self::get_js_datepicker( $post_type, $field_name );
+			case 'ef_date':
+				$js = self::get_js_datepicker( $post_type, $field_name );
 
-			$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
-			// $scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
-			$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).attr( 'value', {$field_name_var} );";
-			$scripts_quick[ $column_name . '3' ] = $js;
-			break;
+				$scripts_quick[ $column_name . '1' ] = "var {$field_name_var} = jQuery( '.column-{$column_name}', post_row ).text();";
+				$scripts_quick[ $column_name . '2' ] = "jQuery( ':input[name={$field_name}]', edit_row ).val( {$field_name_var} );";
+				$scripts_quick[ $column_name . '3' ] = $js;
+				break;
 		}
 
 		return $scripts_quick;
@@ -434,14 +433,14 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		$date_format = cbqe_get_option( $key );
 
 		if ( 'quick' == $mode  ) {
-			$js = "jQuery( '.date-time-pick', edit_row ).datetimepicker({
+			$js = "jQuery( '.datetimepicker', edit_row ).datetimepicker({
 				alwaysSetTime: false,
 				controlType: 'select',
 				dateFormat: '{$date_format}',
 				firstDay: ef_week_first_day,
 			});";
 		} else {
-			$js = "jQuery( '#bulk-edit .date-time-pick' ).datetimepicker({
+			$js = "jQuery( '#bulk-edit .datetimepicker' ).datetimepicker({
 				alwaysSetTime: false,
 				controlType: 'select',
 				dateFormat: '{$date_format}',
@@ -464,9 +463,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		$result = $input;
 		switch ( $field_type ) {
-		case 'ef_date':
-			$result = '<input type="text" class="date-time-pick" name="' . $field_name . '" autocomplete="off" />';
-			break;
+			case 'ef_date':
+				$result = '<input type="text" class="datetimepicker" name="' . $field_name . '" autocomplete="off" />';
+				break;
 		}
 
 		return $result;
@@ -483,9 +482,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		$result = $current;
 		switch ( $field_type ) {
-		case 'ef_date':
-			$result = $current;
-			break;
+			case 'ef_date':
+				$result = $current;
+				break;
 		}
 
 		return $result;
