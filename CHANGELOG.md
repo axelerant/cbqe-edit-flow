@@ -1,6 +1,8 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.1.1
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
 * Use Aihrus Framework 1.0.1
 
