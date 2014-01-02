@@ -1,6 +1,7 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
 ## master
+* Specify a “Text Domain” and “Domain Path”
 
 ## 1.1.1
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
