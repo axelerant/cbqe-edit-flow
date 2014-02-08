@@ -106,6 +106,10 @@ See [CHANGELOG](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CHA
 
 == Upgrade Notice ==
 
+= 1.2.0 =
+
+* Requires Custom Bulk/Quick Edit 1.5.0
+
 = 1.1.0 =
 
 * Current configurations could be lost during upgrading. Please copy your Edit Flow field configuration data to someplace safe to make restoration easy. The underlying custom field key naming structure has changed to support Edit Flow 0.8.0.
