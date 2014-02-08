@@ -36,6 +36,7 @@ define( 'CBQE_EF_EXT_SLUG', 'edit-flow' );
 define( 'CBQE_EF_EXT_VERSION', '0.8' );
 define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
+define( 'CBQE_EF_REQ_BASE_PREM', 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
 define( 'CBQE_EF_REQ_VERSION', '1.5.0-alpha' );

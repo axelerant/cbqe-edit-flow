@@ -4,6 +4,7 @@
 
 ## 1.2.0-alpha
 * Move main class to includes
+* RESOLVE Doesn't activate with premium plugin
 * Specify a “Text Domain” and “Domain Path”
 * Update file structure
 * Use Codeship.io than Travis CI

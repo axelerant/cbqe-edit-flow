@@ -30,8 +30,10 @@ function cbqe_ef_requirements_check() {
 	}
 
 	if ( ! is_plugin_active( CBQE_EF_REQ_BASE ) ) {
-		$valid_requirements = false;
-		add_action( 'admin_notices', 'cbqe_ef_notice_version' );
+		if ( ! is_plugin_active( CBQE_EF_REQ_BASE_PREM ) ) {
+			$valid_requirements = false;
+			add_action( 'admin_notices', 'cbqe_ef_notice_version' );
+		}
 	}
 
 	if ( ! is_plugin_active( CBQE_EF_EXT_BASE ) ) {

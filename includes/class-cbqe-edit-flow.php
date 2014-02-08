@@ -138,22 +138,6 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function version_check() {
-		$valid_version = true;
-
-		$valid_base = true;
-		if ( ! is_plugin_active( CBQE_EF_REQ_BASE ) ) {
-			$valid_base = false;
-		} elseif ( ! defined( 'CBQE_VERSION' ) ) {
-			$valid_base = false;
-		} elseif ( ! version_compare( CBQE_VERSION, CBQE_EF_REQ_VERSION, '>=' ) ) {
-			$valid_base = false;
-		}
-
-		if ( ! $valid_base ) {
-			$valid_version = false;
-			self::set_notice( 'cbqe_ef_notice_version' );
-		}
-
 		$valid_ext = true;
 		if ( ! defined( 'EDIT_FLOW_VERSION' ) ) {
 			$valid_ext = false;
@@ -161,6 +145,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			$valid_ext = false;
 		}
 
+		$valid_version = true;
 		if ( ! $valid_ext ) {
 			$valid_version = false;
 			self::set_notice( 'cbqe_ef_notice_version_ef' );
