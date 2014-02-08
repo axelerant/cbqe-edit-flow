@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit by Aihrus - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Aihrus.
- * Version: 1.1.1
+ * Version: 1.2.0-alpha
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -39,7 +39,7 @@ define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
 define( 'CBQE_EF_REQ_VERSION', '1.4.1' );
-define( 'CBQE_EF_VERSION', '1.1.1' );
+define( 'CBQE_EF_VERSION', '1.2.0-alpha' );
 
 require_once CBQE_EF_DIR_LIB . '/requirements.php';
 

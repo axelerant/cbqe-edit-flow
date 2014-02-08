@@ -1,6 +1,8 @@
 # CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
 
 ## master
+
+## 1.2.0-alpha
 * Specify a “Text Domain” and “Domain Path”
 
 ## 1.1.1
