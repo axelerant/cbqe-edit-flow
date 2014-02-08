@@ -4,6 +4,7 @@
 
 ## 1.2.0RC1
 * Move main class to includes
+* Remove Aihrus Framework loading during requirements checking
 * RESOLVE Doesn't activate with premium plugin
 * Specify a “Text Domain” and “Domain Path”
 * Update file structure
