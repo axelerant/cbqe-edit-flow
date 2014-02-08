@@ -311,6 +311,11 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	}
 
 
+	/**
+	 *
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public static function notice_donate( $disable_donate = null, $item_name = null ) {
 		$disable_donate = cbqe_get_option( 'disable_donate' );
 
