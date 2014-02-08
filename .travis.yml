@@ -1,4 +1,5 @@
-language:
+lff tests/phpcs.ruleset.xml tests/phpcs.ruleset.xml.new
+nguage:
     - php
 
 php:

@@ -4,6 +4,8 @@
 
 ## 1.2.0-alpha
 * Specify a “Text Domain” and “Domain Path”
+* Update file structure
+* Use Codeship.io than Travis CI
 
 ## 1.1.1
 * BUGFIX Inactive REQ_BASE due to old Aihrus Framework
