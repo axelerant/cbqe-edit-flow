@@ -1,6 +1,6 @@
 # Edit Flow for Custom Bulk/Quick Edit plugin for WordPress
 
-[![Build Status](https://travis-ci.org/michael-cannon/cbqe-edit-flow.png?branch=master)](https://travis-ci.org/michael-cannon/cbqe-edit-flow)
+![Codeship status](https://www.codeship.io/projects/f9eb9740-729b-0131-62fb-262d8449eba4/status)
 [![ProjectStatus](http://stillmaintained.com/michael-cannon/cbqe-edit-flow.png)](http://stillmaintained.com/michael-cannon/cbqe-edit-flow)
 
 ## Welcome to the Edit Flow for Custom Bulk/Quick Edit Github repository

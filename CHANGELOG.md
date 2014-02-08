@@ -3,6 +3,7 @@
 ## master
 
 ## 1.2.0-alpha
+* Move main class to includes
 * Specify a “Text Domain” and “Domain Path”
 * Update file structure
 * Use Codeship.io than Travis CI
