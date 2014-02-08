@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.0-alpha
+## 1.2.0RC1
 * Move main class to includes
 * RESOLVE Doesn't activate with premium plugin
 * Specify a “Text Domain” and “Domain Path”
