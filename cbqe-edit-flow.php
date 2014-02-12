@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Custom Bulk/Quick Edit by Aihrus - Edit Flow
+ * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Aihrus.
  * Version: 1.2.0RC1
