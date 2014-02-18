@@ -2,7 +2,7 @@
 
 ## master
 
-## 1.2.0RC1
+## 1.2.0
 * Move main class to includes
 * Remove Aihrus Framework loading during requirements checking
 * Require Custom Bulk/Quick Edit 1.5.0
