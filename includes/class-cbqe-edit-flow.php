@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2013 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2014 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -13,7 +13,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-require_once CBQE_DIR_LIB . 'aihrus-framework/class-aihrus-common.php';
+require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 
 if ( class_exists( 'Custom_Bulkquick_Edit_Edit_Flow' ) )
 	return;
@@ -152,7 +152,8 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		}
 
 		if ( ! $valid_version ) {
-			deactivate_plugins( self::BASE );
+			$deactivate_reason = esc_html__( 'Failed version check' );
+			aihr_deactivate_plugin( self::BASE, CBQE_EF_NAME, $deactivate_reason );
 			self::check_notices();
 		}
 
@@ -281,8 +282,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 			if ( $prior_version < '0.0.1' )
 				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
 
-			if ( $prior_version < self::VERSION )
+			if ( $prior_version < self::VERSION ) {
 				do_action( 'cbqe_ef_update' );
+			}
 
 			cbqe_set_option( self::SLUG . 'admin_notices' );
 		}

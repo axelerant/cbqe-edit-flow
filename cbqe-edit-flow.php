@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Aihrus.
- * Version: 1.2.0
+ * Version: 1.2.1RC1
  * Author: Michael Cannon
  * Author URI: http://aihr.us/resume/
  * License: GPLv2 or later
@@ -13,7 +13,7 @@
 
 
 /**
- * Copyright 2013 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2014 Michael Cannon (email: mc@aihr.us)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -25,6 +25,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) )
+	exit;
 
 define( 'CBQE_EF_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_EF_DIR', plugin_dir_path( __FILE__ ) );
@@ -39,8 +43,8 @@ define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_BASE_PREM', 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
-define( 'CBQE_EF_REQ_VERSION', '1.5.0' );
-define( 'CBQE_EF_VERSION', '1.2.0' );
+define( 'CBQE_EF_REQ_VERSION', '1.5.1RC1' );
+define( 'CBQE_EF_VERSION', '1.2.1RC1' );
 
 require_once CBQE_EF_DIR_INC . 'requirements.php';
 

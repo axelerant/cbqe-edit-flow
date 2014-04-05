@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2013 Michael Cannon (email: mc@aihr.us)
+	Copyright 2014 Michael Cannon (email: mc@aihr.us)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -45,33 +45,36 @@ if ( ! function_exists( 'aihr_notice_version' ) ) {
 }
 
 
+
 function cbqe_ef_requirements_check() {
-	$valid_requirements = true;
+	$check_okay = true;
 	if ( ! is_plugin_active( CBQE_EF_REQ_BASE ) && ! is_plugin_active( CBQE_EF_REQ_BASE_PREM ) ) {
-		$valid_requirements = false;
 		add_action( 'admin_notices', 'cbqe_ef_notice_version' );
+
+		$check_okay = false;
 	}
 
 	if ( ! is_plugin_active( CBQE_EF_EXT_BASE ) ) {
-		$valid_requirements = false;
 		add_action( 'admin_notices', 'cbqe_ef_notice_version_ef' );
+
+		$check_okay = false;
 	}
 
-	if ( ! $valid_requirements ) {
-		deactivate_plugins( CBQE_EF_BASE );
-	}
-
-	return $valid_requirements;
+	return $check_okay;
 }
 
 
 function cbqe_ef_notice_version() {
 	aihr_notice_version( CBQE_EF_REQ_BASE, CBQE_EF_REQ_NAME, CBQE_EF_REQ_SLUG, CBQE_EF_REQ_VERSION, CBQE_EF_NAME );
+	
+	deactivate_plugins( CBQE_EF_BASE );
 }
 
 
 function cbqe_ef_notice_version_ef() {
 	aihr_notice_version( CBQE_EF_EXT_BASE, CBQE_EF_EXT_NAME, CBQE_EF_EXT_SLUG, CBQE_EF_EXT_VERSION, CBQE_EF_NAME );
+	
+	deactivate_plugins( CBQE_EF_BASE );
 }
 
 ?>

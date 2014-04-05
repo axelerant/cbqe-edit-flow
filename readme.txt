@@ -5,7 +5,7 @@ Donate link: http://aihr.us/about-aihrus/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.5
 Tested up to: 3.9.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ See [CHANGELOG](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CHA
 
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+
+* Requires Custom Bulk/Quick Edit 1.5.1
 
 = 1.2.0 =
 
