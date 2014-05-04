@@ -2,9 +2,9 @@
 
 ## master
 
-## 1.2.1RC1
-* Require Custom Bulk/Quick Edit 1.5.1RC1
-* Update Aihrus integration
+## 1.2.1
+* Require Custom Bulk/Quick Edit 1.5.1
+* Update Aihrus Framework integration
 * Update copyright
 
 ## 1.2.0
