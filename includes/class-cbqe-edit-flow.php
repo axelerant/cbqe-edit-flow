@@ -152,7 +152,7 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		}
 
 		if ( ! $valid_version ) {
-			$deactivate_reason = esc_html__( 'Failed version check' );
+			$deactivate_reason = esc_html__( 'Failed version check', 'cbqe-edit-flow' );
 			aihr_deactivate_plugin( self::BASE, CBQE_EF_NAME, $deactivate_reason );
 			self::check_notices();
 		}
