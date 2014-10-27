@@ -138,3 +138,8 @@ TBD
 You can translate this plugin into your own language if it's not done so already. The localization file `cbqe-edit-flow.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://aihr.us/contact-aihrus/) for plugin inclusion.
 
 **[How do I localize?](https://aihrus.zendesk.com/entries/23691557)**
+
+
+== Thank You ==
+
+Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Aihrus](http://aihr.us/about-aihrus/).
