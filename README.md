@@ -34,7 +34,7 @@ There are various ways you can contribute:
 
 * [Raise an issue](https://github.com/michael-cannon/cbqe-edit-flow/issues) on GitHub.
 * Send us a Pull Request with your bug fixes and/or new features.
-* [Translate Edit Flow for Custom Bulk/Quick Edit by Michael Cannon into different languages](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-).
+* [Translate Edit Flow for Custom Bulk/Quick Edit by Michael Cannon into different languages](https://nodedesk.zendesk.com/hc/en-us/articles/202294892-How-do-I-change-Testimonials-Widget-text-labels-).
 * Provide feedback and [suggestions on enhancements](https://github.com/michael-cannon/cbqe-edit-flow/issues?direction=desc&labels=Enhancement&page=1&sort=created&state=open).
 
 ## Thank You

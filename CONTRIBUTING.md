@@ -6,7 +6,7 @@ When contributing please ensure you follow the guidelines below so that we can k
 
 __Please Note:__ GitHub is for bug reports and contributions only - if you have a support question or a request for a customisation don't post here, go to our [Support Forum](http://wordpress.org/support/plugin/cbqe-edit-flow) instead.
 
-For localization, please refer to [How do I change Edit Flow for Custom Bulk/Quick Edit text labels?](https://aihrus.zendesk.com/entries/23691557-How-do-I-change-Testimonials-Widget-text-labels-), though bugs with strings that can't be translated are welcome here.
+For localization, please refer to [How do I change Edit Flow for Custom Bulk/Quick Edit text labels?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892-How-do-I-change-Testimonials-Widget-text-labels-), though bugs with strings that can't be translated are welcome here.
 
 ## Getting Started
 

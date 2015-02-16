@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
- * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Aihrus.
- * Version: 1.2.1
- * Author: Michael Cannon
- * Author URI: http://aihr.us/resume/
+ * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Axelerant.
+ * Version: 1.3.0RC1
+ * Author: Axelerant
+ * Author URI: http://axelerant.com
  * License: GPLv2 or later
  * Text Domain: cbqe-edit-flow
  * Domain Path: /languages
@@ -13,7 +13,7 @@
 
 
 /**
- * Copyright 2014 Michael Cannon (email: mc@aihr.us)
+ * Copyright 2015 Axelerant (email: info@axelerant.com)
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -38,10 +38,10 @@ define( 'CBQE_EF_EXT_BASE', 'edit-flow/edit_flow.php' );
 define( 'CBQE_EF_EXT_NAME', 'Edit Flow' );
 define( 'CBQE_EF_EXT_SLUG', 'edit-flow' );
 define( 'CBQE_EF_EXT_VERSION', '0.8' );
-define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Aihrus' );
+define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Axelerant' );
 define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_BASE_PREM', 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php' );
-define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Aihrus' );
+define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Axelerant' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
 define( 'CBQE_EF_REQ_VERSION', '1.5.1' );
 define( 'CBQE_EF_VERSION', '1.2.1' );
