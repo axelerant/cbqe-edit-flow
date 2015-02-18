@@ -1,4 +1,4 @@
-=== Edit Flow for Custom Bulk/Quick Edit by Axelerant ===
+=== Edit Flow for Custom Bulk/Quick Edit ===
 
 Contributors: comprock
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
@@ -13,7 +13,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 == Description ==
 
-Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit [by Axelerant](http://axelerant.com/about-axelerant/).
+Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit.
 
 = Editable Edit Flow Editorial Metadata Attributes =
 
