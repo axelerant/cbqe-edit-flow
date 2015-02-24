@@ -1,4 +1,4 @@
-# CHANGELOG Edit Flow for Custom Bulk/Quick Edit by Aihrus
+# CHANGELOG Edit Flow for Custom Bulk/Quick Edit
 
 ## master
 

@@ -1,6 +1,6 @@
 === Edit Flow for Custom Bulk/Quick Edit ===
 
-Contributors: comprock
+Contributors: comprock, saurabhd
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.5
 Tested up to: 3.9.0
@@ -141,4 +141,4 @@ You can translate this plugin into your own language if it's not done so already
 
 == Thank You ==
 
-Current development by [Michael Cannon](https://profiles.wordpress.org/comprock/) of [Axelerant](http://axelerant.com/about-axelerant/).
+Current development by [Axelerant](http://axelerant.com/about-axelerant/).
