@@ -24,7 +24,7 @@ If you find an issue, [let us know here](https://github.com/michael-cannon/cbqe-
 
 ## Support
 
-This is a developer's portal for Edit Flow for Custom Bulk/Quick Edit and should not be used for support. Please visit the [Edit Flow for Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546-Custom-Bulk-Quick-Edit) for frequently asked questions, offering ideas, or getting support.
+This is a developer's portal for Edit Flow for Custom Bulk/Quick Edit and should not be used for support. Please visit the [Edit Flow for Custom Bulk/Quick Edit Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112-WordPress-FAQs) for frequently asked questions, offering ideas, or getting support.
 
 ## Contributions
 

@@ -2,10 +2,10 @@
 
 ## master
 
-## 1.2.1
+## 1.3.0RC1
 * Change plugin name
 * Change brand name from Aihrus to Axelerant
-* update copyright
+* Update copyright
 
 ## 1.2.1
 * Require Custom Bulk/Quick Edit 1.5.1

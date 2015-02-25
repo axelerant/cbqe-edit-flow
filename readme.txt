@@ -83,7 +83,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Custom Bulk/Quick Edit Knowledge Base](https://aihrus.zendesk.com/categories/20112546) - read and comment upon frequently asked questions
+1. [Custom Bulk/Quick Edit Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112-WordPress-FAQs) - read and comment upon frequently asked questions
 1. [Open Edit Flow for Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/cbqe-edit-flow/issues) - review and submit bug reports and enhancement requests
 1. [Edit Flow for Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/cbqe-edit-flow) - ask questions and review responses
 1. [Contribute Code to Edit Flow for Custom Bulk/Quick Edit](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CONTRIBUTING.md)
