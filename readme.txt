@@ -20,7 +20,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 * Checkbox
 * Date - Uses date and picker
 * Location (As input)
-* Number - (As input) As int requires [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Number - (As input) As int requires [Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * Paragraph (As textarea)
 * Text (As input)
 * User
@@ -74,7 +74,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 = Most Common Issues =
 
-* Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://aihr.us/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * [How do I add custom columns to my edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
 * [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
 * [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
