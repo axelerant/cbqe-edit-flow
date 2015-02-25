@@ -1,4 +1,4 @@
-# API Edit Flow for Custom Bulk/Quick Edit
+# API - Edit Flow for Custom Bulk/Quick Edit
 
 The [Edit Flow for Custom Bulk/Quick Edit plugin](http://wordpress.org/plugins/edit-flow/) comes with its own set of actions and filters, as described below.
 

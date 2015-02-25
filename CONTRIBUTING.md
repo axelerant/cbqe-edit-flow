@@ -1,4 +1,4 @@
-# Contribute To Edit Flow for Custom Bulk/Quick Edit
+# CONTRIBUTE - Edit Flow for Custom Bulk/Quick Edit
 
 Community made patches, localisation, bug reports and contributions are very welcome and help make Edit Flow for Custom Bulk/Quick Edit the #1 bulk/quick edit plugin for WordPress.
 
