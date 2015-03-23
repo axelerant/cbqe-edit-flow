@@ -43,7 +43,7 @@ define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_BASE_PREM', 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Axelerant' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
-define( 'CBQE_EF_REQ_VERSION', '1.5.1' );
+define( 'CBQE_EF_REQ_VERSION', '1.6.0' );
 define( 'CBQE_EF_VERSION', '1.2.1' );
 
 require_once CBQE_EF_DIR_INC . 'requirements.php';

@@ -4,6 +4,7 @@
 
 ## 1.3.0RC1
 * Change brand name from Aihrus to Axelerant
+* Require Custom Bulk/Quick Edit 1.6.0
 * Revise plugin name
 * Update copyright
 * Update file headers
