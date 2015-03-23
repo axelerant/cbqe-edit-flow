@@ -1,6 +1,7 @@
 === Edit Flow for Custom Bulk/Quick Edit ===
 
 Contributors: comprock, saurabhd
+Donate link: http://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.5
 Tested up to: 3.9.0
