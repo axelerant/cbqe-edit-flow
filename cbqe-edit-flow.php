@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Axelerant.
- * Version: 1.3.0RC1
+ * Version: 1.3.0
  * Author: Axelerant
  * Author URI: http://axelerant.com
  * License: GPLv2 or later
@@ -38,13 +38,13 @@ define( 'CBQE_EF_EXT_BASE', 'edit-flow/edit_flow.php' );
 define( 'CBQE_EF_EXT_NAME', 'Edit Flow' );
 define( 'CBQE_EF_EXT_SLUG', 'edit-flow' );
 define( 'CBQE_EF_EXT_VERSION', '0.8' );
-define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit by Axelerant' );
+define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit' );
 define( 'CBQE_EF_REQ_BASE', 'custom-bulkquick-edit/custom-bulkquick-edit.php' );
 define( 'CBQE_EF_REQ_BASE_PREM', 'custom-bulkquick-edit-premium/custom-bulkquick-edit-premium.php' );
-define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit by Axelerant' );
+define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
 define( 'CBQE_EF_REQ_VERSION', '1.6.0' );
-define( 'CBQE_EF_VERSION', '1.2.1' );
+define( 'CBQE_EF_VERSION', '1.3.0' );
 
 require_once CBQE_EF_DIR_INC . 'requirements.php';
 
