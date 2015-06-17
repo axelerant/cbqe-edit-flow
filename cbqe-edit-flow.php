@@ -27,8 +27,9 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 define( 'CBQE_EF_BASE', plugin_basename( __FILE__ ) );
 define( 'CBQE_EF_DIR', plugin_dir_path( __FILE__ ) );
@@ -65,13 +66,15 @@ add_action( 'plugins_loaded', 'cbqe_ef_init' );
  * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  */
 function cbqe_ef_init() {
-	if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) )
+	if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 		return;
+	}
 
 	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
 		global $Custom_Bulkquick_Edit_Edit_Flow;
-		if ( is_null( $Custom_Bulkquick_Edit_Edit_Flow ) )
+		if ( is_null( $Custom_Bulkquick_Edit_Edit_Flow ) ) {
 			$Custom_Bulkquick_Edit_Edit_Flow = new Custom_Bulkquick_Edit_Edit_Flow();
+		}
 
 		do_action( 'cbqe_ef_init' );
 	}

@@ -15,8 +15,9 @@
 
 require_once AIHR_DIR_INC . 'class-aihrus-common.php';
 
-if ( class_exists( 'Custom_Bulkquick_Edit_Edit_Flow' ) )
+if ( class_exists( 'Custom_Bulkquick_Edit_Edit_Flow' ) ) {
 	return;
+}
 
 
 class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
@@ -56,8 +57,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 		self::update();
 
-		if ( ! Custom_Bulkquick_Edit::do_load() )
+		if ( ! Custom_Bulkquick_Edit::do_load() ) {
 			return;
+		}
 
 		add_action( 'cbqe_save_post', array( __CLASS__, 'save_post' ) );
 		add_action( 'cbqe_validate_settings', array( __CLASS__, 'validate_settings' ), 10, 2 );
@@ -80,8 +82,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function plugin_action_links( $links, $file ) {
-		if ( self::BASE == $file )
+		if ( self::BASE == $file ) {
 			array_unshift( $links, Custom_Bulkquick_Edit::$settings_link );
+		}
 
 		return $links;
 	}
@@ -93,20 +96,23 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function plugin_row_meta( $input, $file ) {
-		if ( self::BASE != $file )
+		if ( self::BASE != $file ) {
 			return $input;
+		}
 
 		$disable_donate = cbqe_get_option( 'disable_donate' );
-		if ( $disable_donate )
+		if ( $disable_donate ) {
 			return $input;
+		}
 
 		$links = array(
 			self::$donate_link,
 		);
 
 		global $Custom_Bulkquick_Edit_Premium;
-		if ( ! isset( $Custom_Bulkquick_Edit_Premium ) )
+		if ( ! isset( $Custom_Bulkquick_Edit_Premium ) ) {
 			$links[] = CBQE_PREMIUM_LINK;
+		}
 
 		$input = array_merge( $input, $links );
 
@@ -115,14 +121,16 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function activation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 	}
 
 
 	public static function deactivation() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 	}
 
 
@@ -132,8 +140,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.LongVariable)
 	 */
 	public static function uninstall() {
-		if ( ! current_user_can( 'activate_plugins' ) )
+		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
+		}
 	}
 
 
@@ -167,11 +176,13 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public static function posts_custom_column( $current, $column, $post_id ) {
-		if ( false === strstr( $column, self::$ef_metadata ) )
+		if ( false === strstr( $column, self::$ef_metadata ) ) {
 			return $current;
+		}
 
-		if ( ! in_array( $column, array_keys( self::$custom_fields ) ) )
+		if ( ! in_array( $column, array_keys( self::$custom_fields ) ) ) {
 			return $current;
+		}
 
 		$meta_key = self::$custom_fields[ $column ];
 		$result   = get_post_meta( $post_id, $meta_key, true );
@@ -179,8 +190,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		if ( false !== strstr( $meta_key, self::$ef_checkbox ) ) {
 			$post_type = get_post_type( $post_id );
 			$options   = Custom_Bulkquick_Edit::get_field_config( $post_type, $column );
-			if ( ! empty( $options ) )
+			if ( ! empty( $options ) ) {
 				$options = array( $options );
+			}
 
 			$result = Custom_Bulkquick_Edit::column_checkbox_radio( $column, $result, $options, 'checkbox' );
 		} elseif ( false !== strstr( $meta_key, self::$ef_date ) ) {
@@ -205,8 +217,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 		);
 
 		foreach ( $taxonomies as $key => $taxonomy ) {
-			if ( in_array( $key, $ignore ) )
+			if ( in_array( $key, $ignore ) ) {
 				unset( $taxonomies[ $key ] );
+			}
 		}
 
 		return $taxonomies;
@@ -214,21 +227,25 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 
 
 	public static function settings_fields( $fields, $post_type ) {
-		if ( ! is_array( $fields ) )
+		if ( ! is_array( $fields ) ) {
 			return $fields;
+		}
 
-		if ( ! class_exists( 'EF_Editorial_Metadata' ) )
+		if ( ! class_exists( 'EF_Editorial_Metadata' ) ) {
 			return $fields;
+		}
 
 		$options = get_option( 'edit_flow_editorial_metadata_options' );
-		if ( empty( $options ) || empty( $options->post_types[ $post_type ] ) || 'on' != $options->post_types[ $post_type ] )
+		if ( empty( $options ) || empty( $options->post_types[ $post_type ] ) || 'on' != $options->post_types[ $post_type ] ) {
 			return $fields;
+		}
 
 		$efem  = new EF_Editorial_Metadata();
 		$terms = $efem->get_editorial_metadata_terms();
 		foreach ( $terms as $term ) {
-			if ( is_null( self::$ef_taxonomy ) )
+			if ( is_null( self::$ef_taxonomy ) ) {
 				self::build_edit_flow_structures( $term );
+			}
 
 			$show_key = self::$ef_metadata . '-' . $term->slug;
 			$meta_key = '_' . self::$ef_taxonomy . '_' . $term->type . '_' . $term->slug;
@@ -257,12 +274,14 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function save_post( $post_id ) {
 		foreach ( self::$custom_fields as $show_key => $meta_key ) {
 			$post_key = Custom_Bulkquick_Edit::SLUG . $show_key;
-			if ( ! isset( $_POST[ $post_key ] ) )
+			if ( ! isset( $_POST[ $post_key ] ) ) {
 				continue;
+			}
 
 			$value = self::clean_string( $_POST[ $post_key ] );
-			if ( '' == $value && Custom_Bulkquick_Edit::$bulk_edit_save )
+			if ( '' == $value && Custom_Bulkquick_Edit::$bulk_edit_save ) {
 				continue;
+			}
 
 			if ( false !== strstr( $meta_key, self::$ef_date ) ) {
 				$value = strtotime( $value );
@@ -279,8 +298,9 @@ class Custom_Bulkquick_Edit_Edit_Flow extends Aihrus_Common {
 	public static function update() {
 		$prior_version = cbqe_get_option( self::SLUG . 'admin_notices' );
 		if ( $prior_version ) {
-			if ( $prior_version < '0.0.1' )
+			if ( $prior_version < '0.0.1' ) {
 				add_action( 'admin_notices', array( __CLASS__, 'notice_0_0_1' ) );
+			}
 
 			if ( $prior_version < self::VERSION ) {
 				do_action( 'cbqe_ef_update' );
