@@ -2,6 +2,9 @@
 
 ## master
 
+## 1.3.1RC1
+* Update store branding
+
 ## 1.3.0
 * Change brand name from Aihrus to Axelerant
 * Require Custom Bulk/Quick Edit 1.6.0

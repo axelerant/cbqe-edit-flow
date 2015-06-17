@@ -1,11 +1,11 @@
 === Edit Flow for Custom Bulk/Quick Edit ===
 
-Contributors: comprock, saurabhd
-Donate link: http://axelerant.com/about-axelerant/donate/
+Contributors: comprock, saurabhd, subharanjan
+Donate link: https://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.9.2
-Tested up to: 4.2.0
-Stable tag: 1.3.0
+Tested up to: 4.3.0
+Stable tag: 1.3.1RC1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 * Checkbox
 * Date - Uses date and picker
 * Location (As input)
-* Number - (As input) As int requires [Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Number - (As input) As int requires [Custom Bulk/Quick Edit Premium](http://store.axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * Paragraph (As textarea)
 * Text (As input)
 * User
@@ -75,7 +75,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 
 = Most Common Issues =
 
-* Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
+* Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://store.axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
 * [How do I add custom columns to my edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
 * [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
 * [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
@@ -88,7 +88,7 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 1. [Open Edit Flow for Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/cbqe-edit-flow/issues) - review and submit bug reports and enhancement requests
 1. [Edit Flow for Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/cbqe-edit-flow) - ask questions and review responses
 1. [Contribute Code to Edit Flow for Custom Bulk/Quick Edit](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CONTRIBUTING.md)
-1. [Beta Testers Needed](http://axelerant.com/become-beta-tester/) - get the latest Edit Flow for Custom Bulk/Quick Edit version
+1. [Beta Testers Needed](http://store.axelerant.com/become-beta-tester/) - get the latest Edit Flow for Custom Bulk/Quick Edit version
 
 
 == Screenshots ==
@@ -135,11 +135,11 @@ TBD
 
 == Localization ==
 
-You can translate this plugin into your own language if it's not done so already. The localization file `cbqe-edit-flow.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](http://axelerant.com/contact-axelerant/) for plugin inclusion.
+You can translate this plugin into your own language if it's not done so already. The localization file `cbqe-edit-flow.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](https://axelerant.com/contact-axelerant/) for plugin inclusion.
 
 **[How do I localize?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892)**
 
 
 == Thank You ==
 
-Current development by [Axelerant](http://axelerant.com/about-axelerant/).
+Current development by [Axelerant](https://axelerant.com/about-axelerant/).
