@@ -40,7 +40,7 @@ function cbqe_ef_requirements_check() {
 		$check_okay = false;
 	}
 
-	if ( ! is_plugin_active( CBQE_EF_EXT_BASE ) ) {
+	if ( ! class_exists( CBQE_EF_EXT_CLASS ) ) {
 		add_action( 'admin_notices', 'cbqe_ef_notice_version_ef' );
 
 		$check_okay = false;

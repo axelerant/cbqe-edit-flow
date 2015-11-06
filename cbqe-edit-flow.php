@@ -50,11 +50,6 @@ define( 'CBQE_EF_REQ_VERSION', '1.6.1' );
 define( 'CBQE_EF_VERSION', '1.3.1' );
 
 require_once CBQE_EF_DIR_INC . 'requirements.php';
-
-if ( ! cbqe_ef_requirements_check() ) {
-	return false;
-}
-
 require_once CBQE_EF_DIR_INC . 'class-cbqe-edit-flow.php';
 
 
@@ -70,6 +65,10 @@ add_action( 'plugins_loaded', 'cbqe_ef_init' );
 function cbqe_ef_init() {
 	if ( ! is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 		return;
+	}
+
+	if ( ! cbqe_ef_requirements_check() ) {
+		return false;
 	}
 
 	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
