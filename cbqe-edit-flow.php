@@ -3,7 +3,7 @@
  * Plugin Name: Custom Bulk/Quick Edit - Edit Flow
  * Plugin URI: http://wordpress.org/plugins/cbqe-edit-flow/
  * Description: Modify Edit Flow options via bulk and quick edit panels in conjunction with Custom Bulk/Quick Edit by Axelerant.
- * Version: 1.3.1
+ * Version: 1.4.0RC1
  * Author: Axelerant
  * Author URI: https://axelerant.com
  * License: GPLv2 or later

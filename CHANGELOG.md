@@ -2,6 +2,9 @@
 
 ## master
 
+##1.4.0RC1
+* Remove activation helpers
+
 ## 1.3.1
 * Update store branding
 
