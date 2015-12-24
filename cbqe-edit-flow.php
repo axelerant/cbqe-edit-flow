@@ -43,14 +43,10 @@ define( 'CBQE_EF_NAME', 'Edit Flow for Custom Bulk/Quick Edit' );
 define( 'CBQE_EF_REQ_CLASS', 'Custom_Bulkquick_Edit' );
 define( 'CBQE_EF_REQ_NAME', 'Custom Bulk/Quick Edit' );
 define( 'CBQE_EF_REQ_SLUG', 'custom-bulkquick-edit' );
-define( 'CBQE_EF_REQ_VERSION', '1.6.1' );
-define( 'CBQE_EF_VERSION', '1.3.1' );
+define( 'CBQE_EF_REQ_VERSION', '1.6.2RC2' );
+define( 'CBQE_EF_VERSION', '1.4.0RC1' );
 
 require_once CBQE_EF_DIR_INC . 'requirements.php';
-require_once CBQE_EF_DIR_INC . 'class-cbqe-edit-flow.php';
-
-
-add_action( 'plugins_loaded', 'cbqe_ef_init' );
 
 
 /**
@@ -66,21 +62,27 @@ function cbqe_ef_init() {
 
 	if ( ! cbqe_ef_requirements_check() ) {
 		return false;
-	}
+	} else {
+		require_once CBQE_EF_DIR_INC . 'class-cbqe-edit-flow.php';
 
-	if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
-		global $Custom_Bulkquick_Edit_Edit_Flow;
-		if ( is_null( $Custom_Bulkquick_Edit_Edit_Flow ) ) {
-			$Custom_Bulkquick_Edit_Edit_Flow = new Custom_Bulkquick_Edit_Edit_Flow();
+		if ( Custom_Bulkquick_Edit_Edit_Flow::version_check() ) {
+			global $Custom_Bulkquick_Edit_Edit_Flow;
+			if ( is_null( $Custom_Bulkquick_Edit_Edit_Flow ) ) {
+				$Custom_Bulkquick_Edit_Edit_Flow = new Custom_Bulkquick_Edit_Edit_Flow();
+			}
+
+			do_action( 'cbqe_ef_init' );
 		}
 
-		do_action( 'cbqe_ef_init' );
 	}
 }
 
+add_action( 'plugins_loaded', 'cbqe_ef_init' );
 
-register_activation_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'activation' ) );
-register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'deactivation' ) );
-register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'uninstall' ) );
+if ( class_exists( 'Custom_Bulkquick_Edit_Edit_Flow' ) ) {
+	register_activation_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'activation' ) );
+	register_deactivation_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'deactivation' ) );
+	register_uninstall_hook( __FILE__, array( 'Custom_Bulkquick_Edit_Edit_Flow', 'uninstall' ) );
+}
 
 ?>
