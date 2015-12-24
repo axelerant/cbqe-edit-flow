@@ -1,7 +1,6 @@
 # README - Edit Flow for Custom Bulk/Quick Edit
 
 [![Codeship status](https://www.codeship.io/projects/f9eb9740-729b-0131-62fb-262d8449eba4/status)](https://www.codeship.io/projects/13665)
-[![ProjectStatus](http://stillmaintained.com/michael-cannon/cbqe-edit-flow.png)](http://stillmaintained.com/michael-cannon/cbqe-edit-flow)
 
 ## Welcome to the Edit Flow for Custom Bulk/Quick Edit Github repository
 

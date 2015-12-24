@@ -6,6 +6,8 @@
 * Remove activation helpers
 * Confirm WordPress 4.4 compatibility
 * Update support email address.
+* Fix coding standards for CI.
+* Remove `ProjectStatus` button by stillmaintained.com from readme file.
 
 ## 1.3.1
 * Update store branding
