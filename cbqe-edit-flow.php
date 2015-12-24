@@ -73,7 +73,6 @@ function cbqe_ef_init() {
 
 			do_action( 'cbqe_ef_init' );
 		}
-
 	}
 }
 
