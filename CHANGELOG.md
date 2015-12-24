@@ -4,6 +4,8 @@
 
 ##1.4.0RC1
 * Remove activation helpers
+* Confirm WordPress 4.4 compatibility
+* Update support email address.
 
 ## 1.3.1
 * Update store branding
