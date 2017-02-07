@@ -2,7 +2,7 @@
 
 ## master
 
-##1.4.0
+## 1.4.0
 * Remove activation helpers
 * Confirm WordPress 4.7.2 compatibility
 * Fix coding standards for CI
