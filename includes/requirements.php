@@ -20,7 +20,7 @@ require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 if ( ! function_exists( 'aihr_notice_version' ) ) {
 	function aihr_notice_version( $required_name, $required_version, $item_name ) {
-		$text = sprintf( __( 'Plugin "%2$s" has been deactivated. Please install and activate "%3$s" version %1$s or newer before activating "%2$s".' ), $required_version, $item_name, $required_name );
+		$text = sprintf( __( 'Plugin "%2$s" has been deactivated. Please install and activate "%3$s" version %1$s or newer before activating "%2$s".', 'cbqe-edit-flow' ), $required_version, $item_name, $required_name );
 
 		$content  = '<div class="error"><p>';
 		$content .= $text;
