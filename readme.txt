@@ -4,8 +4,8 @@ Contributors: comprock, saurabhd, subharanjan
 Donate link: https://axelerant.com/about-axelerant/donate/
 Tags: custom, bulk edit, quick edit, custom post types, edit flow
 Requires at least: 3.9.2
-Tested up to: 4.3.0
-Stable tag: 1.4.0RC1
+Tested up to: 4.7.2
+Stable tag: 1.4.0RC2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,15 +76,15 @@ Modify Edit Flow options via bulk and quick edit panels in conjunction with Cust
 = Most Common Issues =
 
 * Where is the Date picker? Buy [Custom Bulk/Quick Edit Premium](http://store.axelerant.com/downloads/custom-bulkquick-edit-premium-wordpress-plugin/) 
-* [How do I add custom columns to my edit page?](https://nodedesk.zendesk.com/hc/en-us/articles/202330901)
-* [How do you configure options?](https://nodedesk.zendesk.com/hc/en-us/articles/202331561)
-* [Where can I find working samples?](https://nodedesk.zendesk.com/hc/en-us/articles/202331581)
-* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Axelerant Plugins Require PHP 5.3+](https://nodedesk.zendesk.com/hc/en-us/articles/202331041) for the fixes.
-* [Debug common theme and plugin conflicts](https://nodedesk.zendesk.com/hc/en-us/articles/202330781)
+* [How do I add custom columns to my edit page?](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845124)
+* [How do you configure options?](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845124)
+* [Where can I find working samples?](https://axelerant.atlassian.net/wiki/display/WPFAQ/Where+can+I+find+working+samples)
+* Got `Parse error: syntax error, unexpected T_STATIC, expecting ')'`? Read [Most Axelerant Plugins Require PHP 5.3+](https://axelerant.atlassian.net/wiki/pages/viewpage.action?pageId=12845151) for the fixes.
+* [Debug common theme and plugin conflicts](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+to+Debug+common+issues)
 
 = Still Stuck or Want Something Done? Get Support! =
 
-1. [Custom Bulk/Quick Edit Knowledge Base](https://nodedesk.zendesk.com/hc/en-us/sections/200861112-WordPress-FAQs) - read and comment upon frequently asked questions
+1. [Custom Bulk/Quick Edit Knowledge Base](https://axelerant.atlassian.net/wiki/display/WPFAQ/) - read and comment upon frequently asked questions
 1. [Open Edit Flow for Custom Bulk/Quick Edit Issues](https://github.com/michael-cannon/cbqe-edit-flow/issues) - review and submit bug reports and enhancement requests
 1. [Edit Flow for Custom Bulk/Quick Edit Support on WordPress](http://wordpress.org/support/plugin/cbqe-edit-flow) - ask questions and review responses
 1. [Contribute Code to Edit Flow for Custom Bulk/Quick Edit](https://github.com/michael-cannon/cbqe-edit-flow/blob/master/CONTRIBUTING.md)
@@ -137,7 +137,7 @@ TBD
 
 You can translate this plugin into your own language if it's not done so already. The localization file `cbqe-edit-flow.pot` can be found in the `languages` folder of this plugin. After translation, please [send the localized file](https://axelerant.com/contact-axelerant/) for plugin inclusion.
 
-**[How do I localize?](https://nodedesk.zendesk.com/hc/en-us/articles/202294892)**
+**[How do I localize?](https://axelerant.atlassian.net/wiki/display/WPFAQ/How+do+I+change+Testimonials+Widget+text+labels)**
 
 
 == Thank You ==

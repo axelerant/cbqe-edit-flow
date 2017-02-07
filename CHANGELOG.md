@@ -2,12 +2,13 @@
 
 ## master
 
-##1.4.0RC1
+##1.4.0RC2
 * Remove activation helpers
-* Confirm WordPress 4.4 compatibility
-* Update support email address.
-* Fix coding standards for CI.
-* Remove `ProjectStatus` button by stillmaintained.com from readme file.
+* Confirm WordPress 4.7.2 compatibility
+* Fix coding standards for CI
+* Remove `ProjectStatus` button by stillmaintained.com from readme file
+* Update FAQ links url
+* Update support email address
 
 ## 1.3.1
 * Update store branding
